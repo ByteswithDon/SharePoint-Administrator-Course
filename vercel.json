@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/sharepoint-admin-course.html" }
+  ]
+}
