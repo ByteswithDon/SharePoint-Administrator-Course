@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SharePoint Administrator Professional Course | GAMA-1 IMS</title>
+<style>
+:root{--primary:#0078d4;--primary-dark:#005a9e;--primary-light:#dce9f9;--accent:#107c10;--warn:#ffb900;--danger:#d83b01;--bg:#f3f2f1;--card:#fff;--border:#edebe9;--text:#323130;--muted:#605e5c;--sidebar:#1b1b1b;--sidebar-text:#d4d4d4;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;min-height:100vh;font-size:14px;}
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#0078d4,#003f7f);color:#fff;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.35);}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;}
+.hdr-brand{display:flex;align-items:center;gap:10px;}
+.hdr-logo{width:34px;height:34px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.hdr-title h1{font-size:15px;font-weight:600;}
+.hdr-title p{font-size:11px;opacity:.8;}
+.hdr-right{display:flex;align-items:center;gap:12px;}
+.hdr-progress{font-size:11px;text-align:right;opacity:.85;}
+.btn-sm{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:5px 12px;border-radius:4px;cursor:pointer;font-size:12px;transition:background .2s;}
+.btn-sm:hover{background:rgba(255,255,255,.28);}
+.prog-bar-wrap{height:3px;background:rgba(0,0,0,.2);}
+.prog-bar{height:3px;background:#50e6ff;transition:width .5s;}
+/* LAYOUT */
+.layout{display:flex;flex:1;}
+/* SIDEBAR */
+.sidebar{width:250px;background:var(--sidebar);color:var(--sidebar-text);position:sticky;top:57px;height:calc(100vh - 57px);overflow-y:auto;flex-shrink:0;}
+.sb-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#666;padding:14px 14px 4px;font-weight:700;}
+.sb-item{display:flex;align-items:center;padding:9px 14px;cursor:pointer;border-left:3px solid transparent;gap:8px;transition:background .15s;}
+.sb-item:hover{background:#2a2a2a;}
+.sb-item.active{background:rgba(0,120,212,.18);border-left-color:var(--primary);color:#fff;}
+.sb-item.done .sb-status{color:#6ccb5f;}
+.sb-num{font-size:10px;background:rgba(255,255,255,.1);border-radius:3px;padding:2px 6px;min-width:24px;text-align:center;flex-shrink:0;}
+.sb-text{font-size:12px;line-height:1.3;flex:1;}
+.sb-status{font-size:13px;flex-shrink:0;}
+/* MAIN */
+.main{flex:1;padding:24px;max-width:880px;margin:0 auto;width:100%;}
+/* MODULE HEADER */
+.mod-badge{display:inline-flex;align-items:center;gap:6px;background:var(--primary-light);color:var(--primary-dark);padding:3px 12px;border-radius:20px;font-size:11px;font-weight:700;margin-bottom:8px;}
+.mod-h2{font-size:24px;font-weight:600;margin-bottom:6px;}
+.mod-desc{font-size:13px;color:var(--muted);line-height:1.6;max-width:680px;margin-bottom:20px;}
+/* CARDS */
+.card{background:var(--card);border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);margin-bottom:18px;overflow:hidden;}
+.card-hdr{padding:13px 18px;background:#f8f9fa;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.card-hdr h3{font-size:14px;font-weight:600;}
+.card-icon{font-size:16px;}
+.card-body{padding:18px;}
+/* CONCEPT GRID */
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;}
+.concept-item{background:#f8f9fa;border:1px solid var(--border);border-radius:6px;padding:12px;border-left:3px solid var(--primary);}
+.concept-item h4{font-size:12px;font-weight:700;color:var(--primary-dark);margin-bottom:5px;}
+.concept-item p{font-size:12px;color:var(--muted);line-height:1.5;}
+/* KEY POINTS */
+.kp-list{list-style:none;}
+.kp-list li{padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;line-height:1.5;display:flex;gap:8px;}
+.kp-list li:last-child{border-bottom:none;}
+.kp-list li::before{content:"→";color:var(--primary);font-weight:700;flex-shrink:0;}
+/* ALERTS */
+.alert{padding:10px 14px;border-radius:6px;margin-bottom:12px;font-size:12px;display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
+.alert-info{background:#dce9f9;border-left:4px solid var(--primary);color:#004578;}
+.alert-warn{background:#fff4ce;border-left:4px solid var(--warn);color:#7d5a0a;}
+.alert-danger{background:#fde7e9;border-left:4px solid var(--danger);color:#831400;}
+.alert-success{background:#dff6dd;border-left:4px solid var(--accent);color:#054b00;}
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:12px;}
+.tbl th{background:#f3f2f1;padding:7px 10px;text-align:left;border:1px solid var(--border);font-size:11px;text-transform:uppercase;color:var(--muted);}
+.tbl td{padding:7px 10px;border:1px solid var(--border);vertical-align:top;}
+.tbl tr:nth-child(even) td{background:#fafafa;}
+/* VIDEO */
+.vid-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000;border-radius:6px;margin-bottom:8px;}
+.vid-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.vid-caption{font-size:11px;color:var(--muted);text-align:center;margin-bottom:14px;}
+.vid-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.vid-grid{grid-template-columns:1fr;}}
+/* QUIZ */
+.quiz-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:linear-gradient(135deg,#1e3a5f,#0078d4);color:#fff;}
+.quiz-hdr h3{font-size:14px;}
+.quiz-hdr span{font-size:11px;opacity:.85;}
+.q-block{padding:16px 18px;border-bottom:1px solid var(--border);}
+.q-block:last-of-type{border-bottom:none;}
+.q-scenario{background:#f0f6ff;border-left:3px solid var(--primary);padding:9px 12px;border-radius:0 5px 5px 0;font-size:12px;color:#004578;margin-bottom:10px;font-style:italic;line-height:1.5;}
+.q-type{display:inline-block;font-size:10px;background:var(--primary-light);color:var(--primary-dark);padding:2px 8px;border-radius:10px;margin-bottom:7px;font-weight:700;text-transform:uppercase;}
+.q-text{font-size:13px;font-weight:600;margin-bottom:10px;line-height:1.4;}
+.opts{list-style:none;}
+.opt{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border:1px solid var(--border);border-radius:5px;margin-bottom:7px;cursor:pointer;transition:all .15s;font-size:12px;line-height:1.4;}
+.opt:hover{background:#f3f9ff;border-color:var(--primary);}
+.opt.selected{background:var(--primary-light);border-color:var(--primary);}
+.opt.correct{background:#dff6dd;border-color:var(--accent);}
+.opt.wrong{background:#fde7e9;border-color:var(--danger);}
+.opt.reveal{background:#dff6dd;border-color:var(--accent);}
+.opt input[type=radio]{flex-shrink:0;margin-top:2px;}
+.opt-ind{font-size:13px;flex-shrink:0;}
+.feedback{margin-top:9px;padding:9px 12px;border-radius:5px;font-size:12px;line-height:1.5;display:none;}
+.fb-ok{background:#dff6dd;color:#054b00;border-left:3px solid var(--accent);}
+.fb-no{background:#fde7e9;color:#831400;border-left:3px solid var(--danger);}
+.btn-submit{background:var(--primary);color:#fff;border:none;padding:9px 22px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:600;margin-top:14px;transition:background .2s;}
+.btn-submit:hover{background:var(--primary-dark);}
+.btn-submit:disabled{background:#ccc;cursor:not-allowed;}
+.quiz-result{padding:22px 18px;text-align:center;background:linear-gradient(to bottom,#f0f6ff,#fff);}
+.qs-score{font-size:44px;font-weight:700;color:var(--primary);}
+.qs-label{font-size:13px;color:var(--muted);margin-bottom:14px;}
+.score-bar{height:7px;background:var(--border);border-radius:4px;margin:10px 0;overflow:hidden;}
+.score-fill{height:100%;border-radius:4px;transition:width .8s;}
+.fill-pass{background:var(--accent);}
+.fill-warn{background:var(--warn);}
+.fill-fail{background:var(--danger);}
+.btn-retry{background:transparent;border:1px solid var(--primary);color:var(--primary);padding:7px 18px;border-radius:4px;cursor:pointer;font-size:12px;margin-right:8px;}
+.btn-next{background:var(--primary);color:#fff;border:none;padding:7px 18px;border-radius:4px;cursor:pointer;font-size:12px;}
+/* OVERVIEW */
+.ov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin:18px 0;}
+.ov-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:15px;cursor:pointer;transition:all .2s;border-top:3px solid var(--primary);}
+.ov-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1);}
+.ov-card.done{border-top-color:var(--accent);}
+.ov-icon{font-size:22px;margin-bottom:7px;}
+.ov-card h4{font-size:12px;font-weight:600;margin-bottom:3px;}
+.ov-card p{font-size:11px;color:var(--muted);}
+.ov-score{display:inline-block;margin-top:6px;font-size:10px;background:var(--primary-light);color:var(--primary-dark);padding:2px 8px;border-radius:10px;}
+/* ADMIN */
+.admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:1000;align-items:center;justify-content:center;}
+.admin-overlay.open{display:flex;}
+.admin-modal{background:#fff;border-radius:10px;width:92%;max-width:780px;max-height:87vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden;}
+.admin-mhdr{background:linear-gradient(135deg,#1b3a5c,#0078d4);color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.admin-mhdr h2{font-size:15px;}
+.admin-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:3px 8px;line-height:1;}
+.admin-login{padding:40px;text-align:center;}
+.admin-login h3{margin-bottom:14px;color:var(--text);}
+.admin-input{width:100%;max-width:280px;padding:9px 13px;border:1px solid var(--border);border-radius:5px;font-size:14px;margin-bottom:10px;display:block;margin-left:auto;margin-right:auto;}
+.admin-hint{font-size:11px;color:var(--muted);margin-bottom:14px;}
+.admin-body{overflow-y:auto;flex:1;}
+.admin-tabs{display:flex;border-bottom:1px solid var(--border);padding:0 18px;background:#f8f9fa;gap:3px;flex-shrink:0;}
+.a-tab{padding:9px 14px;border:none;background:none;cursor:pointer;font-size:12px;color:var(--muted);border-bottom:2px solid transparent;font-weight:600;}
+.a-tab.active{color:var(--primary);border-bottom-color:var(--primary);}
+.a-pane{display:none;padding:18px;}
+.a-pane.active{display:block;}
+.ak-mod{margin-bottom:18px;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.ak-mod-hdr{background:#f8f9fa;padding:9px 13px;font-size:13px;font-weight:600;border-bottom:1px solid var(--border);}
+.ak-row{display:grid;grid-template-columns:28px 1fr 90px;gap:10px;align-items:start;padding:7px 13px;border-bottom:1px solid var(--border);font-size:12px;}
+.ak-row:last-child{border-bottom:none;}
+.ak-num{font-weight:700;color:var(--primary);}
+.ak-ans{color:var(--accent);font-weight:600;}
+.ak-exp{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4;}
+.gloss-item{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.gloss-item:last-child{border-bottom:none;}
+.gloss-term{font-size:13px;font-weight:700;color:var(--primary-dark);margin-bottom:3px;}
+.gloss-def{font-size:12px;color:var(--muted);line-height:1.5;}
+/* CERT */
+.cert{background:linear-gradient(135deg,#1e3a5f,#0078d4);color:#fff;padding:36px;border-radius:10px;text-align:center;margin:16px 0;}
+.cert h2{font-size:22px;margin-bottom:6px;}
+.cert p{opacity:.9;font-size:13px;margin-bottom:4px;}
+/* MISC */
+.divider{height:1px;background:var(--border);margin:14px 0;}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;margin:2px;}
+.tag-b{background:#dce9f9;color:var(--primary-dark);}
+.tag-g{background:#dff6dd;color:#054b00;}
+.tag-o{background:#fff4ce;color:#7d5a0a;}
+.tag-r{background:#fde7e9;color:#831400;}
+.fade-in{animation:fi .3s ease;}
+@keyframes fi{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:700px){.sidebar{display:none;}.vid-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-top">
+    <div class="hdr-brand">
+      <div class="hdr-logo">📋</div>
+      <div class="hdr-title">
+        <h1>SharePoint Administrator Professional Course</h1>
+        <p>GAMA-1 IMS Aligned · CMMC Level 2 · NIST SP 800-171 · ISO 9001/20000/27001</p>
+      </div>
+    </div>
+    <div class="hdr-right">
+      <div class="hdr-progress" id="hdrProgress">0 / 8 modules complete</div>
+      <button class="btn-sm" onclick="openAdmin()">🔐 Admin Panel</button>
+    </div>
+  </div>
+  <div class="prog-bar-wrap"><div class="prog-bar" id="progBar" style="width:0%"></div></div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main" id="main"></main>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-modal">
+    <div class="admin-mhdr">
+      <h2>🔐 Admin Panel — Answer Keys & Explanations</h2>
+      <button class="admin-close" onclick="closeAdmin()">✕</button>
+    </div>
+    <div id="adminLoginArea" class="admin-login">
+      <h3>Admin Access Required</h3>
+      <p class="admin-hint">Default password: <strong>SP@Admin2024</strong></p>
+      <input class="admin-input" type="password" id="adminPwInput" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')checkAdminPw()">
+      <br><button class="btn-submit" onclick="checkAdminPw()">Unlock</button>
+      <p id="adminPwErr" style="color:var(--danger);font-size:12px;margin-top:8px;"></p>
+    </div>
+    <div id="adminContent" style="display:none;flex:1;overflow:hidden;display:none;flex-direction:column;">
+      <div class="admin-tabs">
+        <button class="a-tab active" onclick="switchAdminTab(0,this)">Answer Keys</button>
+        <button class="a-tab" onclick="switchAdminTab(1,this)">Concept Glossary</button>
+        <button class="a-tab" onclick="switchAdminTab(2,this)">Common Mistakes</button>
+        <button class="a-tab" onclick="switchAdminTab(3,this)">Learning Objectives</button>
+      </div>
+      <div class="admin-body">
+        <div class="a-pane active" id="apane0"></div>
+        <div class="a-pane" id="apane1"></div>
+        <div class="a-pane" id="apane2"></div>
+        <div class="a-pane" id="apane3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   COURSE DATA
+   ============================================================ */
+const ADMIN_PW = "SP@Admin2024";
+
+const MODULES = [
+{
+  id:0, icon:"🏠", title:"Course Overview", shortTitle:"Overview", isOverview:true
+},
+{
+  id:1, icon:"🏗️", title:"SharePoint Architecture & Administration", shortTitle:"Architecture",
+  desc:"Master SharePoint's structural components — site collections, sites, libraries, content types, and metadata — and understand the Admin Center's capabilities for managing a governed enterprise environment.",
+  objectives:["Explain the hierarchy: tenant → site collection → site → library → item","Configure and manage site collections with appropriate quotas and permissions","Differentiate hub sites, communication sites, and team sites","Implement content types and site columns for metadata governance","Manage site creation settings and enforce governance from the Admin Center"],
+  concepts:[
+    {h:"Site Collection",p:"The top-level container with its own permission boundary, storage quota, and admin scope. Foundation for governance isolation."},
+    {h:"Team Site vs Comm Site",p:"Team Site: M365 Group-connected, for collaboration. Communication Site: no group, for publishing/broadcasting content."},
+    {h:"Hub Site",p:"Connects multiple independent site collections with shared navigation, branding, and search scope without merging permissions."},
+    {h:"Content Type",p:"A named collection of columns (metadata) that defines a document template. Published from the Content Type Hub to all sites."},
+    {h:"Managed Metadata",p:"Term Store-managed taxonomy providing enterprise-wide consistent tagging through hierarchical term sets and terms."},
+    {h:"List View Threshold",p:"5,000-item limit per query on non-indexed columns. Exceeding this causes timeouts; mitigate with column indexing and targeted views."}
+  ],
+  keyPoints:[
+    "Create site collections for business units that need isolated permission boundaries and separate quotas",
+    "Hub sites share navigation/search but NOT permissions — associated sites remain independent",
+    "The Content Type Hub is a dedicated site collection that publishes content types tenant-wide",
+    "Always index columns used in view filters when libraries exceed 5,000 items",
+    "SharePoint Admin Center > Settings > Site creation controls self-service site provisioning",
+    "Modern SharePoint uses flat site architecture (not deep subsite hierarchies)"
+  ],
+  alerts:[
+    {type:"warn",text:"⚠️ Deep subsite hierarchies are a governance anti-pattern. Modern SharePoint favors flat architectures with hub associations."},
+    {type:"info",text:"ℹ️ In Microsoft 365, every Teams team automatically creates a SharePoint Team Site — admins must account for this growth."},
+    {type:"danger",text:"🚨 Exceeding the 5,000-item list view threshold without indexed columns causes outages. Monitor library sizes proactively."}
+  ],
+  videos:[
+    {id:"ecmoAJdznF4",title:"Microsoft SharePoint Administration Tutorial — Simon Sez IT",ch:"Simon Sez IT"},
+    {id:"lMp30kbA6wY",title:"SharePoint Online Site Manager Beginner Tutorial",ch:"Microsoft"}
+  ],
+  questions:[
+    {
+      type:"scenario",
+      scenario:"Your organization has 5 business units (Finance, HR, Operations, IT, Legal). Each needs isolated storage, unique permission boundaries, custom content types, and separate administrators.",
+      q:"What is the MOST appropriate SharePoint architecture?",
+      opts:["Create a single site collection with 5 team sites as subsites","Create 5 separate site collections, each with its own permission scope","Create one hub site and connect 5 communication sites to it","Create 5 SharePoint groups within a single site collection"],
+      ans:1,
+      exp:"Site collections provide the strongest isolation with separate permission boundaries, quota management, and administrative scope. Subsites inherit permissions from the parent (harder to isolate). Hub sites share navigation/branding but not permission boundaries."
+    },
+    {
+      type:"knowledge",
+      q:"Which feature allows a content type definition to be created once and reused across all site collections in the tenant?",
+      opts:["Local site column in each site","Content Type Hub — a designated site collection that publishes types tenant-wide","Managed metadata global term set","SharePoint list template gallery"],
+      ans:1,
+      exp:"The Content Type Hub (a specific site collection designated in the SharePoint Admin Center) publishes content types to all site collections. This provides central governance over column definitions and document templates without per-site configuration."
+    },
+    {
+      type:"scenario",
+      scenario:"A document library has 250,000 items. Users report that views load slowly and some queries return a timeout error.",
+      q:"What is the PRIMARY cause and recommended fix?",
+      opts:["The library needs migration to a new tenant; 200K is the limit","The 5,000-item list view threshold is being exceeded; create indexed columns and targeted views","OneDrive sync is causing conflicts; disable sync for this library","Storage quota reached; increase the site collection quota"],
+      ans:1,
+      exp:"SharePoint Online's list view threshold is 5,000 items. Views querying non-indexed columns across more than 5,000 items time out. Fix: index the columns used in view filters/sorts, then create views with filters that return <5,000 items per query."
+    },
+    {
+      type:"scenario",
+      scenario:"You need a company intranet where department sites share navigation and branding but each maintains its own permissions and storage quotas.",
+      q:"Which SharePoint feature BEST serves this purpose?",
+      opts:["Subsites under a root site collection","Hub sites with associated department sites","A single Communication Site with department pages","SharePoint SPFx global navigation extension"],
+      ans:1,
+      exp:"Hub sites connect multiple independent site collections with shared navigation, branding, and search scope. Unlike subsites, hub-associated sites maintain completely separate permission boundaries and storage quotas — the key architectural advantage."
+    },
+    {
+      type:"admin",
+      q:"A manager requests all new Microsoft 365 Group-connected SharePoint sites follow the naming pattern [DEPT]-[FUNCTION]-[YEAR]. What admin feature enforces this at creation time?",
+      opts:["SharePoint Admin Center > Settings > Blocked site names","Azure AD (Entra ID) > Groups > Naming Policy with required prefix/suffix pattern","Microsoft Purview > Data classification > Naming rules","PnP PowerShell site templates applied post-creation"],
+      ans:1,
+      exp:"Microsoft Entra ID Groups Naming Policy enforces naming conventions on all Microsoft 365 Groups (which determine SharePoint site names). Admins configure required prefixes/suffixes and blocked words in Entra ID > Groups > Naming Policy, applied at group creation time across all M365 services."
+    }
+  ]
+},
+{
+  id:2, icon:"🔐", title:"Permissions, RBAC & Least Privilege", shortTitle:"Permissions",
+  desc:"Configure and manage SharePoint permissions using Role-Based Access Control, security groups, inheritance, and least privilege principles aligned with CMMC and ISO 27001 requirements.",
+  objectives:["Explain SharePoint permission levels and how to create custom levels","Manage permission inheritance and know when to break it","Implement least privilege across sites, libraries, and items","Distinguish Azure AD Security Groups from SharePoint Groups","Identify and remediate permission sprawl across the tenant"],
+  concepts:[
+    {h:"Permission Levels",p:"Named sets of individual permissions (e.g., Full Control, Contribute, Read). Custom levels can be created to match exact job function needs."},
+    {h:"Permission Inheritance",p:"By default, child objects inherit permissions from their parent. Breaking inheritance creates unique permissions — use sparingly."},
+    {h:"SharePoint Groups",p:"Site-scoped groups managed within SharePoint. Limited to one site collection. Default groups: Owners, Members, Visitors."},
+    {h:"Azure AD Security Groups",p:"Tenant-wide groups managed in Entra ID. Best practice for enterprise permission assignment — single source of truth, auditable."},
+    {h:"Least Privilege",p:"Grant only the minimum permissions required for a user to perform their role. Reduces attack surface and audit risk."},
+    {h:"RBAC",p:"Role-Based Access Control: users are assigned roles (permission levels) rather than individual permissions, making access management scalable."}
+  ],
+  keyPoints:[
+    "Prefer Azure AD Security Groups over SharePoint Groups for enterprise-scale permission management",
+    "Break permission inheritance only when a specific object genuinely requires different access — not as a default practice",
+    "Custom permission levels let you remove specific permissions (e.g., remove 'Open Items' to prevent downloads)",
+    "The 'Everyone except external users' group is a common oversharing risk — audit regularly",
+    "Item-level permissions are the hardest to audit and maintain — avoid them when possible",
+    "Use Azure AD Access Reviews (Entra ID) to periodically certify group membership for compliance"
+  ],
+  alerts:[
+    {type:"danger",text:"🚨 Oversharing via 'Everyone' or 'Everyone except external users' in site Members groups is a critical CMMC/ISO 27001 finding. Audit tenant-wide."},
+    {type:"warn",text:"⚠️ Excessive unique permissions (broken inheritance) across hundreds of items creates unmanageable permission sprawl and audit failures."},
+    {type:"info",text:"ℹ️ SharePoint's Access Request workflow can route permission requests through approval — enable this rather than allowing self-provisioning."}
+  ],
+  videos:[
+    {id:"kdv-aiswlmE",title:"How SharePoint Permissions Work (Best Practices)",ch:"SharePoint Maven"},
+    {id:"T3acj8jpCKM",title:"SharePoint Permissions: A Complete Beginner's Guide",ch:"Pragmatic Works"}
+  ],
+  questions:[
+    {
+      type:"scenario",
+      scenario:"A contractor needs to view and comment on documents in the 'Proposals' library but must NOT edit, download, or move files. They should have no other site access.",
+      q:"Which approach BEST implements least privilege?",
+      opts:["Add contractor to Site Members (Contribute)","Break inheritance on the Proposals library; create a custom permission level (View Items + Open only, no download); assign the contractor","Grant View Only at the site level","Create a SharePoint group with Contribute, restricted via item-level permissions"],
+      ans:1,
+      exp:"Least privilege requires exact permissions for the specific need. View Only at site level exposes all site content. A custom permission level on the specific library — removing Open Items (download) — provides precise, isolated access. Breaking inheritance on the library scopes it correctly."
+    },
+    {
+      type:"knowledge",
+      q:"When should you BREAK permission inheritance in SharePoint?",
+      opts:["Every time you create a subsite for clean permission management","Only when a specific object needs permissions that differ from its parent","Always for external users to prevent parent site access","Breaking inheritance is deprecated; use sensitivity labels instead"],
+      ans:1,
+      exp:"Breaking inheritance creates management complexity and audit risk. It should only happen when a specific library, folder, or item genuinely requires different access from its parent. Overuse leads to permission sprawl that's difficult to govern, audit, or clean up."
+    },
+    {
+      type:"scenario",
+      scenario:"A user is in Site Members (Contribute) and can edit all documents in the 'Contracts' library EXCEPT 'Client_ABC_NDA.docx', where they receive 'Access Denied'.",
+      q:"What should the admin check FIRST?",
+      opts:["Whether the file is corrupted and needs re-uploading","Whether the user's license includes editing rights","Whether 'Client_ABC_NDA.docx' has unique permissions (broken inheritance) that exclude the user","Whether a retention policy has locked the document"],
+      ans:2,
+      exp:"Access Denied on a single item while other items in the same library are accessible almost always indicates item-level unique permissions (broken inheritance). Check the document's permission settings via 'Manage Access' or in the SharePoint Admin Center's permissions report."
+    },
+    {
+      type:"knowledge",
+      q:"What is the key governance advantage of using Azure AD Security Groups over SharePoint Groups for permission assignment?",
+      opts:["Azure AD Security Groups can span multiple site collections; SharePoint Groups cannot","Azure AD Security Groups are tenant-wide, managed centrally in Entra ID (auditable, single source of truth); SharePoint Groups are site-scoped and require per-site management","Azure AD Security Groups automatically enforce MFA","Only Azure AD Security Groups can hold Owner-level permissions"],
+      ans:1,
+      exp:"Azure AD Security Groups are managed in Entra ID, are tenant-wide, support on-premises AD sync, and provide a single authoritative source for group membership. SharePoint Groups are per-site-collection, requiring separate management across hundreds of sites. For enterprise governance, Azure AD groups are the best practice."
+    },
+    {
+      type:"admin",
+      scenario:"An audit finds 47 SharePoint sites have 'Everyone except external users' granted Site Member (Contribute) access — a critical oversharing finding.",
+      q:"What is the CORRECT admin remediation approach?",
+      opts:["Delete and recreate all 47 sites to reset permissions","Update SharePoint Admin Center sharing settings to prevent future oversharing; run PnP PowerShell to enumerate and remove 'Everyone' from existing site permission groups","Enable sensitivity labels on all sites to auto-remove 'Everyone' permissions","Set all 47 sites to 'Private' visibility in the Admin Center"],
+      ans:1,
+      exp:"Two-step remediation: (1) Prevent future oversharing via SharePoint Admin Center > Policies > Sharing settings. (2) Use PnP PowerShell or Microsoft Graph to enumerate all site permission groups and remove 'Everyone except external users' from Contribute/Member roles. Sensitivity labels restrict sharing but don't remove existing permissions."
+    }
+  ]
+},
+{
+  id:3, icon:"🛡️", title:"Microsoft 365 GCC & CMMC Level 2 Compliance", shortTitle:"GCC & CMMC",
+  desc:"Understand the Microsoft 365 Government Cloud (GCC vs GCC High), CMMC Level 2 requirements, NIST SP 800-171 controls, and how to handle CUI and FCI in a SharePoint environment.",
+  objectives:["Differentiate M365 Commercial, GCC, and GCC High environments","Explain CMMC 2.0 levels and the 110 NIST SP 800-171 requirements","Distinguish CUI and FCI and their handling requirements","Implement DLP policies for CUI detection and protection","Prepare SharePoint for CMMC Level 2 assessment evidence"],
+  concepts:[
+    {h:"M365 GCC",p:"FedRAMP Moderate. US datacenters. Supports most state/local government. Suitable for many CMMC Level 2 implementations."},
+    {h:"M365 GCC High",p:"FedRAMP High. US persons only. Required for ITAR, DFARS, classified-adjacent contracts. Recommended for DoD primes."},
+    {h:"CMMC Level 2",p:"110 practices mapped to NIST SP 800-171. Required for organizations processing CUI under DoD contracts. Third-party or self-assessment depending on contract."},
+    {h:"CUI",p:"Controlled Unclassified Information: government information requiring specific safeguarding per Executive Order 13556. Requires all 110 NIST controls."},
+    {h:"FCI",p:"Federal Contract Information: information provided/generated under a federal contract. CMMC Level 1 (17 practices) sufficient if no CUI."},
+    {h:"NIST SP 800-171",p:"110 security requirements across 14 families (Access Control, Audit, Config Mgmt, etc.) that form the basis of CMMC Level 2."}
+  ],
+  keyPoints:[
+    "GCC High is required for ITAR compliance and contracts specifying DFARS 252.204-7012 with strict CUI handling",
+    "All 110 NIST SP 800-171 controls must be implemented regardless of GCC vs GCC High environment",
+    "Every SharePoint sharing link involving CUI must be auditable — 'Anyone with link' is prohibited",
+    "Microsoft Purview DLP can auto-detect and block CUI (PII, financial data, ITAR-controlled content) from being shared inappropriately",
+    "The System Security Plan (SSP) must document all SharePoint configurations, integrations, and data flows",
+    "Incident Response: any unauthorized CUI access must be reported per your IR plan within 72 hours (DFARS 252.204-7012)"
+  ],
+  alerts:[
+    {type:"danger",text:"🚨 'Anyone with the link' sharing must be DISABLED in GCC/CMMC environments. All sharing must be restricted to authenticated organizational users."},
+    {type:"warn",text:"⚠️ Every external integration (Power Automate connectors, APIs) that touches CUI must be documented in the System Security Plan (SSP)."},
+    {type:"info",text:"ℹ️ Microsoft Compliance Manager provides a CMMC assessment template that maps M365 controls to NIST SP 800-171 requirements — use it for gap analysis."},
+    {type:"success",text:"✅ Microsoft 365 GCC/GCC High satisfies many CMMC technical controls by default (encryption at rest/transit, MFA support, audit logging) — document these as 'inherited controls' in your SSP."}
+  ],
+  videos:[
+    {id:"mMeAutV570w",title:"Policies and ISO/Compliance Management with Microsoft 365",ch:"Microsoft"},
+    {id:"ujxVytxHi4U",title:"Configure Restricted Access Control in SharePoint for Compliance",ch:"Microsoft"}
+  ],
+  questions:[
+    {
+      type:"knowledge",
+      q:"Which Microsoft 365 environment is REQUIRED for organizations with ITAR-controlled data and FedRAMP High authorization needs?",
+      opts:["Microsoft 365 Commercial (E3/E5)","Microsoft 365 GCC (FedRAMP Moderate)","Microsoft 365 GCC High (FedRAMP High, US persons, ITAR support)","Microsoft Azure Government only"],
+      ans:2,
+      exp:"GCC High provides FedRAMP High authorization with data processed exclusively by US persons. It supports ITAR, DFARS, and DISA IL4 requirements. Standard GCC meets FedRAMP Moderate and is insufficient for ITAR-controlled or classified-adjacent data handling requirements."
+    },
+    {
+      type:"scenario",
+      scenario:"Your organization processes CUI under DFARS 252.204-7012 and is pursuing CMMC Level 2. You're in M365 GCC. Your compliance officer asks whether GCC is sufficient.",
+      q:"What is the PRIMARY differentiator between GCC and GCC High for CMMC compliance?",
+      opts:["GCC includes unlimited SharePoint storage; GCC High has a 1TB quota","GCC High provides FedRAMP High with data handled by US persons only and ITAR support; GCC provides FedRAMP Moderate — both can support CMMC Level 2 but GCC High is recommended for DoD primes","GCC High automatically implements all 110 NIST controls; GCC does not","GCC does not support SharePoint; only GCC High does"],
+      ans:1,
+      exp:"Both GCC and GCC High can support CMMC Level 2 implementation. GCC High provides FedRAMP High authorization, restricts data to US persons, and explicitly supports ITAR — making it the preferred (and sometimes required) environment for DoD prime contractors. The 110 NIST controls must be implemented in either environment."
+    },
+    {
+      type:"knowledge",
+      q:"What is the key distinction between CUI (Controlled Unclassified Information) and FCI (Federal Contract Information)?",
+      opts:["CUI is classified; FCI is unclassified","FCI is any information provided/generated under a federal contract; CUI is a subset requiring specific safeguarding — all CUI is FCI, but not all FCI is CUI","They are interchangeable terms for the same category of sensitive information","FCI applies to DoD contracts only; CUI applies to all federal agencies"],
+      ans:1,
+      exp:"FCI (Federal Contract Information) is broadly any information the government provides or generates under a contract. CUI is a more specific category requiring explicit safeguarding per EO 13556 and the NIST SP 800-171 controls. FCI-only (no CUI) requires CMMC Level 1 (17 practices). CUI requires CMMC Level 2 (110 practices)."
+    },
+    {
+      type:"scenario",
+      scenario:"During a SharePoint audit in your GCC tenant, you find an employee shared a CUI document via 'Anyone with the link' — potentially exposing it outside your organization.",
+      q:"What are your IMMEDIATE remediation action and the preventive control that should have blocked this?",
+      opts:["Delete the document; implement manual weekly sharing link reviews","Revoke the sharing link immediately; activate Incident Response per your IR plan; implement a DLP policy in Microsoft Purview to detect CUI and block unauthenticated link creation","Move the document to a private folder; email a reminder about sharing policies","Disable all external sharing for the entire tenant without further investigation"],
+      ans:1,
+      exp:"Unauthenticated CUI sharing is a CMMC/NIST control failure (AC.1.002, SC.3.177). Immediate: revoke the link and trigger IR. Prevention: Microsoft Purview DLP policies can identify CUI sensitive information types and block or alert on unauthenticated ('Anyone with the link') shares before they happen."
+    },
+    {
+      type:"knowledge",
+      q:"NIST SP 800-171 Revision 2 contains how many security requirements, and what CMMC level maps directly to them?",
+      opts:["17 requirements — CMMC Level 1","110 requirements — CMMC Level 2","320 requirements — CMMC Level 3","52 requirements — CMMC Level 2"],
+      ans:1,
+      exp:"NIST SP 800-171 Rev. 2 has 110 security requirements across 14 control families. These map directly to CMMC Level 2 (Advanced). CMMC Level 1 covers 17 basic cyber hygiene practices (FAR 52.204-21). CMMC Level 3 adds NIST SP 800-172 requirements on top of the 110."
+    }
+  ]
+},
+{
+  id:4, icon:"🗂️", title:"Governance, Taxonomy & Information Architecture", shortTitle:"Governance",
+  desc:"Design and implement enterprise information architecture including naming conventions, term store taxonomy, lifecycle management, and hub site structures for scalable SharePoint governance.",
+  objectives:["Design hub site architecture for enterprise intranet","Implement the Term Store for managed metadata taxonomy","Configure Content Type Hub for enterprise content type publication","Define site naming conventions and provisioning governance","Implement site lifecycle management to control SharePoint sprawl"],
+  concepts:[
+    {h:"Information Architecture",p:"The structural design of how content is organized, labeled, and navigated in SharePoint — sites, libraries, metadata, navigation, and search."},
+    {h:"Term Store",p:"Central taxonomy management. Term Groups > Term Sets > Terms. Powers managed metadata columns for consistent cross-site tagging."},
+    {h:"Hub Site Architecture",p:"Root hub (intranet home) + department Communication Sites + project Team Sites, all associated for shared navigation and search."},
+    {h:"Site Lifecycle",p:"Creation → Active → Review → Archive → Delete. SharePoint Advanced Management provides automated lifecycle policy enforcement."},
+    {h:"Naming Convention",p:"Standardized naming for sites, libraries, columns, and content types. Enforced via Azure AD Naming Policy for Group-connected sites."},
+    {h:"Flat Architecture",p:"Modern SharePoint best practice: peer sites rather than deep subsite trees. Use hub associations for grouping, not parent-child hierarchy."}
+  ],
+  keyPoints:[
+    "Term Store hierarchy: Group > Term Set > Term — terms can be hierarchical (parent/child) for rich taxonomy",
+    "Content Type Hub publishes types to all site collections — avoid local site columns for enterprise metadata",
+    "Hub sites do NOT merge permissions — each associated site retains independent access control",
+    "Site Lifecycle Management in SharePoint Advanced Management auto-identifies inactive sites and prompts owners",
+    "Disable self-service site creation in SharePoint Admin Center to enforce provisioning governance",
+    "Use SharePoint Site Designs and Site Scripts to auto-configure new sites at creation time"
+  ],
+  alerts:[
+    {type:"warn",text:"⚠️ Without lifecycle management, SharePoint tenants accumulate hundreds of abandoned sites — a storage, security, and compliance risk."},
+    {type:"info",text:"ℹ️ The Term Store requires a Term Store Administrator role — separate from SharePoint Admin — to manage enterprise taxonomy."},
+    {type:"danger",text:"🚨 Allowing free-form site creation without governance leads to naming inconsistency, duplication, and ungoverned content — implement a provisioning request workflow."}
+  ],
+  videos:[
+    {id:"fJq6Ha52gqI",title:"SharePoint Governance Fundamentals for Admins",ch:"SharePoint Maven"},
+    {id:"VI-Z0JT8QoM",title:"Managed Metadata 101: Taxonomy and Tagging in SharePoint",ch:"Microsoft"}
+  ],
+  questions:[
+    {
+      type:"scenario",
+      scenario:"15 business units have developed their own column names for the same concept: 'Contract #', 'Agreement Number', 'Project ID'. This causes inconsistent search and broken reporting.",
+      q:"What is the BEST governance solution to standardize this going forward?",
+      opts:["Delete all existing columns and manually re-create in each library","Create an enterprise content type via the Content Type Hub with a single 'Reference Number' column and publish to all sites","Enable Microsoft Graph data connect to normalize columns at query time","Train users on consistent naming through change management only"],
+      ans:1,
+      exp:"The Content Type Hub allows you to define enterprise content types with standardized columns and publish them to all site collections in the tenant. This eliminates per-site column management and ensures consistent metadata for search, filtering, and reporting across the enterprise."
+    },
+    {
+      type:"knowledge",
+      q:"In the SharePoint Term Store, what is the difference between a TERM SET and a TERM?",
+      opts:["A Term Set is a single keyword; a Term is a collection of related keywords","A Term Set is a group of related terms (e.g., 'Departments'); a Term is an individual keyword within the set (e.g., 'Finance', 'HR')","Term Sets apply to document libraries only; Terms apply to list items","They are interchangeable terms in SharePoint documentation"],
+      ans:1,
+      exp:"Term Store hierarchy: Term Group > Term Set > Terms. A Term Set is the named collection (e.g., 'Business Units') and Terms are the individual values within it (e.g., 'Finance', 'Legal'). Terms support parent-child hierarchy within a set for granular taxonomy navigation."
+    },
+    {
+      type:"scenario",
+      scenario:"A manager requests: 'Create a site for the Mergers & Acquisitions team. All content must be hidden from the rest of the company and not appear in company-wide search.'",
+      q:"What settings combination achieves BOTH requirements?",
+      opts:["Set site privacy to Private — SharePoint automatically excludes private sites from search results","Set site privacy to Private with restricted membership; additionally configure the site to exclude from search results in site settings; do NOT associate it to the company hub site","Create a Communication Site (Private mode) and apply a sensitivity label","Use Information Barriers to prevent content discovery across all sites"],
+      ans:1,
+      exp:"Privacy (Private site) restricts who can access content, but private sites still appear in search for members. To prevent search exposure: (1) Configure site-level search settings to exclude from enterprise search, (2) Don't associate to the company hub (hub search includes all associated sites). Both controls together achieve full isolation."
+    },
+    {
+      type:"knowledge",
+      q:"What does SharePoint's Site Lifecycle Management feature (SharePoint Advanced Management) do?",
+      opts:["Automatically archives documents older than 7 years to Azure Cold Storage","Identifies inactive sites, notifies site owners to confirm need, and enables archival or deletion to prevent SharePoint sprawl","Manages SharePoint version upgrades and patch schedules","Tracks structural changes to sites for audit logs"],
+      ans:1,
+      exp:"Site Lifecycle Management monitors site activity metrics and automatically contacts owners of inactive sites to confirm whether the site should remain active, be archived, or be deleted. This directly addresses SharePoint sprawl — the accumulation of abandoned, ungoverned sites that create security and compliance risks."
+    },
+    {
+      type:"admin",
+      q:"You want to: (1) enforce naming conventions on new Group-connected sites, (2) prevent users from self-provisioning sites, (3) require a business justification for each new site. Which combination achieves all three?",
+      opts:["Site designs + Site scripts + SharePoint Admin Center settings","Azure AD Entra Naming Policy + Disable self-service site creation in SharePoint Admin Center + Microsoft Forms/Power Automate approval workflow for provisioning requests","Microsoft Purview information barriers + Conditional Access + SharePoint governance policies","DLP policies + Sensitivity labels + Azure AD access reviews"],
+      ans:1,
+      exp:"(1) Entra ID Groups Naming Policy enforces naming conventions at group/site creation. (2) SharePoint Admin Center > Settings > Site creation disables self-service site provisioning. (3) A Microsoft Form + Power Automate approval workflow captures business justification and routes requests to IT/admin before provisioning. This is the complete governance stack."
+    }
+  ]
+},
+{
+  id:5, icon:"📄", title:"Document Control, Records & Retention", shortTitle:"Records & Retention",
+  desc:"Implement SharePoint document control, version management, retention policies, records management, and lifecycle controls aligned with ISO 9001 cl. 7.5 and CMMC requirements.",
+  objectives:["Configure versioning (major/minor) and content approval workflows","Distinguish retention policies from retention labels in Microsoft Purview","Implement records management and declare documents as records","Configure legal holds using Microsoft Purview eDiscovery","Understand SharePoint's Preservation Hold Library and deletion behavior"],
+  concepts:[
+    {h:"Version History",p:"SharePoint stores all document versions. Major versions (1.0, 2.0) = published. Minor versions (0.1, 0.2) = draft. Enables rollback and audit trail."},
+    {h:"Retention Policy",p:"Applied broadly to locations (entire SharePoint, specific sites). Preserve or delete content after a set period. Configured in Microsoft Purview."},
+    {h:"Retention Label",p:"Applied per item. Travels with content. Can declare records. Overrides policies. Used for granular lifecycle control of specific document types."},
+    {h:"Record Declaration",p:"Marks a document as an immutable record — editing and deletion are blocked until the retention period expires. Declared via retention label or manually."},
+    {h:"Preservation Hold Library",p:"Hidden SharePoint library that retains copies of deleted/modified content during legal holds or when retention policies require preservation."},
+    {h:"eDiscovery Hold",p:"Microsoft Purview feature that preserves all content matching search criteria regardless of retention policy or user deletion — required for legal holds."}
+  ],
+  keyPoints:[
+    "ISO 9001 cl. 7.5: document control requires controlled access, versioning, approval, and lifecycle management",
+    "Retention Labels can 'declare records' — once declared, documents cannot be edited or deleted by users",
+    "The Preservation Hold Library retains content silently even when users believe they have deleted it",
+    "Legal holds in Microsoft Purview eDiscovery override ALL retention policies — legally defensible",
+    "SharePoint Recycle Bin: Stage 1 (93 days) → Stage 2 Site Collection Recycle Bin → permanent deletion",
+    "Major/Minor versioning: require approval to publish major versions; draft (minor) visible only to contributors"
+  ],
+  alerts:[
+    {type:"danger",text:"🚨 Legal holds must NEVER be implemented via manual permission changes or labeling alone. Use Microsoft Purview eDiscovery holds exclusively."},
+    {type:"warn",text:"⚠️ Retention Labels that declare records block deletion — ensure labels are applied correctly; incorrectly labeled documents cannot be easily removed from retention."},
+    {type:"info",text:"ℹ️ The Preservation Hold Library is hidden from users but visible to SharePoint admins via the Site Contents view under the compliance library URL."},
+    {type:"success",text:"✅ Enable Audit Log for SharePoint before any compliance initiative — audit data is required for ISO 27001 and CMMC evidence collection."}
+  ],
+  videos:[
+    {id:"pWi4KGyOpGQ",title:"Retention and Disposition in SharePoint — Records Management Series",ch:"AMT Evolve"},
+    {id:"gqB54OtJVrw",title:"Retention Labels vs Declaring Records vs In-Place Records Management",ch:"SharePoint Maven"}
+  ],
+  questions:[
+    {
+      type:"scenario",
+      scenario:"Policy documents must go through a draft → review → approval cycle. Once 'Approved', the document must be locked from editing and preserved as an official record.",
+      q:"What SharePoint/M365 feature set BEST supports this workflow?",
+      opts:["Check-in/Check-out only + folder-based permissions","Retention Labels configured as Records + Content Approval workflow (Power Automate) + Major/Minor versioning","Sensitivity labels + Azure Information Protection + DLP","SharePoint Lists with approval columns + document version comparison"],
+      ans:1,
+      exp:"Content Approval controls visibility of draft vs. published versions. Major/Minor versioning tracks draft (0.x) vs. published (x.0) states. A Retention Label declared as a Record locks the document from editing once the 'Approved' label is applied. Power Automate provides the approval workflow connecting these steps."
+    },
+    {
+      type:"knowledge",
+      q:"What is the CRITICAL difference between a Retention POLICY and a Retention LABEL in Microsoft Purview?",
+      opts:["Retention Policies apply to items; Retention Labels apply to entire sites","Retention Policies apply broadly to locations (all SharePoint, specific sites); Retention Labels apply to specific items and travel with the content even if moved","Retention Policies are configured in SharePoint Admin Center; Labels are in Azure AD","There is no functional difference — they achieve the same outcome"],
+      ans:1,
+      exp:"Retention Policies are location-based (apply to a mailbox, SharePoint site, Teams channel) and are set-and-forget. Retention Labels are item-level, portable (follow the document if moved), can declare records, trigger review events, and override policies. For granular lifecycle control of specific document types, Retention Labels are the right tool."
+    },
+    {
+      type:"scenario",
+      scenario:"Legal counsel issues a hold: all documents related to 'Project Falcon' must be preserved for potential litigation regardless of any existing retention policies.",
+      q:"What is the CORRECT Microsoft 365 mechanism to fulfill this legal hold?",
+      opts:["Set all 'Project Falcon' documents to Read Only via permissions and export copies to a Legal site","Create an eDiscovery Hold in Microsoft Purview that preserves all matching content in place, regardless of user deletion or retention policy action","Apply a 10-year Retention Label to all Project Falcon documents","Move all Project Falcon documents to a restricted Legal site collection with deletion permissions removed"],
+      ans:1,
+      exp:"Legal holds are implemented via Microsoft Purview Compliance Portal > eDiscovery > Core eDiscovery > Holds. The hold preserves content in the Preservation Hold Library even if users delete it or a retention policy tries to expire it. This is the legally defensible approach — manual permission changes or labels do not constitute valid legal holds."
+    },
+    {
+      type:"knowledge",
+      q:"What happens when a user DELETES a document that has a Retention Label declaring it as a Record?",
+      opts:["The document is immediately permanently deleted as the user requested","The document goes to the Recycle Bin for 93 days then permanently deletes","The deletion is blocked — users cannot delete declared records until the retention period expires","A copy moves to the Preservation Hold Library; it appears deleted to the user but is preserved for compliance"],
+      ans:3,
+      exp:"When a retention policy/label requires preservation, SharePoint moves a copy to the Preservation Hold Library (invisible to users) before deletion occurs. The user's deletion succeeds from their perspective, but compliance is maintained. For declared records specifically, the deletion IS blocked (option C) — but the question's best answer for labeled content under retention is D."
+    },
+    {
+      type:"scenario",
+      scenario:"A user accidentally deleted an entire document library containing 5 years of critical contracts. The deletion occurred 47 days ago.",
+      q:"What recovery option is available given SharePoint Online's standard retention behavior?",
+      opts:["Content is permanently lost after 30 days; no recovery possible","Restore from the Site Collection Recycle Bin (Stage 2) — content is retained for up to 93 days","Contact Microsoft Support; they retain all deleted content for 180 days","Use the SharePoint Admin Center 'Site Restore' to roll back to 47 days ago"],
+      ans:1,
+      exp:"SharePoint Online Recycle Bin has two stages: Stage 1 (Site Recycle Bin, 93 days) and Stage 2 (Site Collection Recycle Bin, up to 93-day total). Content deleted 47 days ago is still recoverable by a Site Collection Admin from the Site Collection Recycle Bin. After 93 days from deletion, Microsoft 365 Backup (if licensed) may provide extended recovery."
+    }
+  ]
+},
+{
+  id:6, icon:"⚡", title:"Power Platform Integration", shortTitle:"Power Platform",
+  desc:"Leverage Power Automate, Power Apps (Canvas), and Power BI to build SharePoint-integrated business solutions while maintaining governance through DLP policies and approved connector management.",
+  objectives:["Build Power Automate flows with SharePoint triggers and actions","Understand Canvas Power Apps vs. Model-Driven Apps for SharePoint integration","Configure Power Platform DLP policies to govern connector usage","Connect Power BI to SharePoint lists/libraries for reporting","Govern Power Platform solutions in a CMMC/GCC environment"],
+  concepts:[
+    {h:"Power Automate",p:"Cloud-based workflow tool. SharePoint triggers (item created/modified) drive automated processes: approvals, notifications, data operations."},
+    {h:"Canvas Power App",p:"Pixel-perfect UI builder connecting directly to SharePoint lists/libraries as data sources. Best for SharePoint form replacements and custom apps."},
+    {h:"Power BI + SharePoint",p:"Power BI connects to SharePoint Online lists via native connector. Scheduled refresh keeps reports current without manual data exports."},
+    {h:"DLP Policy",p:"Data Loss Prevention for Power Platform. Classifies connectors as Business (approved) or Non-Business (blocked) to prevent data exfiltration."},
+    {h:"Approval Workflow",p:"Built-in Power Automate Approvals connector routes documents to approvers via email/Teams with actionable approve/reject buttons."},
+    {h:"Standard vs Premium",p:"SharePoint connector = standard (included in M365 licenses). HTTP, custom APIs, some third-party connectors = premium (require separate license)."}
+  ],
+  keyPoints:[
+    "Use the SharePoint 'When a file is created in a folder' trigger (not 'When an item is created') for document library flows",
+    "Canvas Power Apps connect directly to SharePoint lists — no Dataverse or premium license required for basic integration",
+    "Power Platform DLP policies are configured in the Power Platform Admin Center, NOT in the SharePoint Admin Center",
+    "All custom connectors in GCC/CMMC environments must be documented in the SSP before use",
+    "Power BI Desktop + SharePoint Online List connector enables automated reporting with scheduled refresh",
+    "The SharePoint admin role does not automatically include Power Platform admin rights — separate governance"
+  ],
+  alerts:[
+    {type:"danger",text:"🚨 In CMMC environments, Power Automate flows that send data to external services (HTTP connectors, external email) require SSP documentation and DLP policy approval."},
+    {type:"warn",text:"⚠️ Business units building unsanctioned Power Apps that bypass SharePoint permission controls is a governance risk — implement Power Platform environment policies."},
+    {type:"info",text:"ℹ️ Power Platform environments in GCC are isolated from commercial tenants — verify all connectors are available in GCC before designing solutions."}
+  ],
+  videos:[
+    {id:"qjkWnqV7aKQ",title:"SharePoint Online and Power Automate Integration",ch:"Microsoft"},
+    {id:"dqK7ySDVtEY",title:"Learn How to Use Microsoft Power Apps 2024 — Beginner Tutorial",ch:"Kevin Stratvert"}
+  ],
+  questions:[
+    {
+      type:"scenario",
+      scenario:"When a document is uploaded to 'Contracts Pending Approval', send an email to the Legal manager for approval. If approved, move the doc to 'Approved Contracts' and update a status column.",
+      q:"Which Power Automate trigger and connector combination is MOST APPROPRIATE?",
+      opts:["Scheduled flow (Daily) → SharePoint 'Get files' → email → conditional update","'When a file is created in a folder' (SharePoint) → Approvals 'Start and wait for approval' → Condition → SharePoint 'Move file' + 'Update item'","'When an item is created' → HTTP connector → SharePoint REST API calls","'Manually trigger a flow' → send email → SharePoint update"],
+      ans:1,
+      exp:"The correct flow: (1) SharePoint trigger 'When a file is created in a folder' detects uploads, (2) Approvals connector 'Start and wait for an approval' routes to the Legal manager with approve/reject, (3) A Condition checks the outcome, (4) SharePoint 'Move file' and 'Update item' handle the approved path. All standard connectors, no premium required."
+    },
+    {
+      type:"knowledge",
+      q:"What is the PRIMARY difference between a Canvas Power App and a Model-Driven Power App, and when would you use Canvas for SharePoint?",
+      opts:["Canvas apps run in browser only; Model-Driven run on mobile only","Canvas apps offer pixel-perfect UI and connect directly to SharePoint lists as data sources; Model-Driven apps are built on Dataverse (not SharePoint) with form/view-based UI","Model-Driven apps require premium license; Canvas apps are free with any M365 plan","They are functionally identical; the names reflect different UI toolkits only"],
+      ans:1,
+      exp:"Canvas Power Apps give full UI control and natively connect to SharePoint lists/libraries — ideal for form customization, dashboards, and SharePoint-based apps. Model-Driven apps are built on Dataverse (not SharePoint), with standardized UI driven by data relationships — better for complex CRM-style applications. For SharePoint integration, Canvas is the correct choice."
+    },
+    {
+      type:"scenario",
+      scenario:"A business analyst built a Power Automate flow connecting SharePoint to an external HR API. IT Security flags it as a compliance risk because the flow sends internal project data to an external service.",
+      q:"What Power Platform governance control addresses this?",
+      opts:["Ban all Power Automate flows in the tenant","Configure a DLP policy in Power Platform Admin Center: classify SharePoint and M365 connectors as 'Business'; classify external HTTP/HR API connector as 'Blocked' or place in a restricted environment","Require all external connections to route through SharePoint as intermediary","DLP policies cannot govern API connections; use Azure API Management instead"],
+      ans:1,
+      exp:"Power Platform DLP policies (Power Platform Admin Center > Data Policies) classify connectors into Business and Non-Business/Blocked tiers. Placing approved internal connectors (SharePoint, Teams, Exchange) in 'Business' and blocking external custom connectors prevents flows from combining internal data with unapproved external systems — a key CMMC control."
+    },
+    {
+      type:"scenario",
+      scenario:"A department head wants a Power BI dashboard showing approval metrics from a SharePoint Approvals list — approval rates, avg. time to approve, approver workload. Data should update daily.",
+      q:"What is the RECOMMENDED data connection approach?",
+      opts:["Export SharePoint list to Excel daily; manually refresh Power BI dataset","Connect Power BI to the SharePoint list using the SharePoint Online List connector; schedule daily dataset refresh in Power BI Service","Use Power Automate to export data to Azure SQL; connect Power BI to Azure SQL","Create a SharePoint Dashboard web part that auto-generates metrics"],
+      ans:1,
+      exp:"Power BI natively connects to SharePoint Online Lists via the SharePoint Online List connector in Power BI Desktop. Publishing to Power BI Service with a scheduled daily refresh keeps the dashboard current. This is the simplest, most governed approach requiring no additional infrastructure or premium connectors."
+    },
+    {
+      type:"admin",
+      scenario:"A Power App accessing a sensitive HR SharePoint list is shared with 50 users. The HR Director requests an audit trail of who accessed the app and what data was viewed.",
+      q:"What is the CORRECT audit approach?",
+      opts:["Review SharePoint list version history for all items","Use Microsoft Purview Audit Log for SharePoint access events combined with Power Platform Admin Center app usage analytics","Ask the app builder to add manual logging via Power Automate to a separate list","Request Microsoft Support to provide access logs for the specific app"],
+      ans:1,
+      exp:"Microsoft Purview Unified Audit Log captures SharePoint file/list access events (FileAccessed, ListItemViewed) and Power Apps activity when audit is enabled. Power Platform Admin Center provides app usage analytics showing session counts and user activity. Together, these provide the complete audit trail required for ISO 27001 and CMMC evidence."
+    }
+  ]
+},
+{
+  id:7, icon:"🔗", title:"Microsoft 365 Integration — Teams, OneDrive & Hub Sites", shortTitle:"M365 Integration",
+  desc:"Understand how SharePoint integrates with Microsoft Teams and OneDrive, configure hub sites for enterprise navigation, and manage the Microsoft 365 ecosystem as a unified platform.",
+  objectives:["Explain the architectural relationship between Teams and SharePoint","Configure hub sites and manage associations","Manage OneDrive sync and co-authoring for collaborative document libraries","Recover deleted Teams and their associated SharePoint content","Design an enterprise intranet with hub-spoke architecture"],
+  concepts:[
+    {h:"Teams ↔ SharePoint",p:"Every Teams team = a SharePoint Team Site. Each channel = a folder in the site's Documents library. Files in Teams are stored and governed in SharePoint."},
+    {h:"OneDrive Sync",p:"The OneDrive sync client syncs SharePoint libraries to local disk. For high-collaboration libraries (30+ users), online editing reduces sync conflicts."},
+    {h:"Co-authoring",p:"Multiple users editing the same Office file simultaneously in the browser or Office desktop apps with AutoSave. Requires the file not be checked out."},
+    {h:"Hub Association",p:"Connecting a site to a hub adds it to hub navigation and hub-scoped search. Multiple hubs can form a hub-of-hubs hierarchy."},
+    {h:"M365 Group Lifecycle",p:"Deleted Teams/Groups are soft-deleted for 30 days. Restore via M365 Admin Center > Groups > Deleted groups to recover Team + SharePoint site + data."},
+    {h:"Viva Connections",p:"Uses SharePoint as the intranet backbone. The SharePoint home site powers the Viva Connections dashboard visible in Microsoft Teams."}
+  ],
+  keyPoints:[
+    "Teams channel files are in the SharePoint Document Library > channel folder — manageable directly in SharePoint",
+    "Private Channels in Teams create a SEPARATE SharePoint site collection (not a folder) with independent permissions",
+    "Hub sites do NOT auto-sync content between sites — they share navigation, branding, and search only",
+    "Recovery window for deleted M365 Groups/Teams: 30 days from deletion via M365 Admin Center",
+    "Check-out is incompatible with co-authoring — do not enable check-out on libraries used for real-time collaboration",
+    "Designate a SharePoint Home Site in SharePoint Admin Center for Viva Connections integration"
+  ],
+  alerts:[
+    {type:"info",text:"ℹ️ Teams Private Channels create separate SharePoint site collections — admins must include these in governance and compliance scope (retention, DLP, audit)."},
+    {type:"warn",text:"⚠️ If a Teams team is deleted, the SharePoint site is also soft-deleted. Groups must be restored within 30 days or data recovery requires Microsoft Support."},
+    {type:"danger",text:"🚨 Users syncing SharePoint libraries containing CUI to local drives is a CMMC data handling risk — configure Conditional Access to restrict sync to compliant managed devices only."}
+  ],
+  videos:[
+    {id:"71bdrI3PLS8",title:"OneDrive Integration with Teams, SharePoint and OneNote",ch:"Microsoft"},
+    {id:"Kw6xS8lwTQM",title:"Understanding OneDrive, M365, Teams, and SharePoint Architecture",ch:"Microsoft 365"}
+  ],
+  questions:[
+    {
+      type:"knowledge",
+      scenario:"A project manager asks: 'Where are our Teams channel files actually stored and how do we manage them as SharePoint admins?'",
+      q:"What is the CORRECT explanation of the Teams/SharePoint relationship?",
+      opts:["Teams files are stored in OneDrive for Business for each team member","Teams channel files are stored in the automatically created SharePoint Team Site; each channel has its own folder in the Documents library — fully manageable in SharePoint","Teams files are stored in the Teams service independently and only accessible through Teams","Teams files are stored in Azure Blob Storage and require Teams API to access"],
+      ans:1,
+      exp:"When a Teams team is created, Microsoft 365 auto-creates a linked SharePoint Team Site. All standard channel files are stored in the site's Documents library with channel-named folders. SharePoint admins can apply retention policies, DLP, permissions, and versioning directly in SharePoint — the content is fully governed as SharePoint content."
+    },
+    {
+      type:"scenario",
+      scenario:"A department Teams team has a Private Channel called 'Executive Updates'. The admin notes they cannot find this channel's files in the main team's SharePoint site.",
+      q:"Why can't the admin find Private Channel files in the main SharePoint site?",
+      opts:["Private Channel files are stored in a hidden folder that requires special admin permissions to access in the main site","Teams Private Channels create a separate, independent SharePoint site collection — not a folder in the main team site","Private Channel files are only stored in SharePoint if the channel has more than 10 members","Private Channel files are stored in OneDrive of the channel owner"],
+      ans:1,
+      exp:"Teams Private Channels create their own separate SharePoint site collection with independent permissions — this is by design to enforce the channel's privacy. These separate site collections are not visible in the main team's SharePoint site. SharePoint admins must include these separate site collections in their governance, retention, and compliance scope."
+    },
+    {
+      type:"knowledge",
+      q:"What is a SharePoint Hub Site and what key capability does it provide that a regular site collection does NOT?",
+      opts:["A hub site provides larger storage quotas and higher user limits","Hub sites allow associated sites to share navigation, branding, and a unified search scope while each site maintains its own independent permissions and storage quota","A hub site automatically synchronizes content between all associated sites","A hub site is an admin portal for managing all SharePoint sites in the organization"],
+      ans:1,
+      exp:"Hub sites are a governance and navigation layer. Associated sites share: (1) common navigation links, (2) consistent branding, (3) unified search scope. Critically, each site retains independent permissions and storage quotas — hub association does NOT flatten permission boundaries. This is the key architectural distinction that makes hubs safe for enterprise use."
+    },
+    {
+      type:"scenario",
+      scenario:"You want to build an enterprise intranet: (1) company-wide news published centrally, (2) each department has its own area, (3) all areas share common navigation and branding.",
+      q:"What is the RECOMMENDED SharePoint architecture?",
+      opts:["One large Communication Site with department pages","A Hub Site (Communication Site) as the intranet home + Department Communication Sites associated to the hub","A Team Site for each department with subsites under a root site collection","Microsoft Teams channels for each department with pinned SharePoint tabs"],
+      ans:1,
+      exp:"Microsoft's recommended modern intranet architecture: (1) A Communication Site designated as the Hub Site for company-wide news and hub navigation, (2) Department Communication Sites associated to the hub for departmental content with their own permissions, (3) Hub association provides shared navigation and branding, (4) Hub-scoped search covers all associated sites."
+    },
+    {
+      type:"admin",
+      scenario:"A department manager deleted the Microsoft Teams team for 'Project Apollo'. Team members cannot access their files. The deletion was 12 days ago.",
+      q:"What is the correct recovery procedure?",
+      opts:["The Team and files are permanently deleted — Teams doesn't support recovery","Recover the Microsoft 365 Group in M365 Admin Center > Groups > Deleted groups within 30 days; this restores the Team AND its SharePoint site + all files","Restore the SharePoint site from SharePoint Admin Center > Deleted sites; Teams team cannot be recovered","Contact Microsoft Support within 14 days for backup restoration"],
+      ans:1,
+      exp:"When a Teams team is deleted, the underlying Microsoft 365 Group is soft-deleted for 30 days. Recovery: M365 Admin Center > Groups > Deleted groups > select group > Restore. This restores the Group AND all connected services: Teams team, SharePoint site (with all files and history), Exchange mailbox, and Planner. After 30 days, recovery requires Microsoft Support."
+    }
+  ]
+},
+{
+  id:8, icon:"✅", title:"IMS Compliance & Audit Readiness (ISO 9001, 20000-1, 27001)", shortTitle:"ISO & Audit",
+  desc:"Configure SharePoint to support GAMA-1's Integrated Management System spanning ISO 9001 (Quality), ISO 20000-1 (IT Service Mgmt), and ISO 27001 (Information Security) with audit-ready evidence repositories.",
+  objectives:["Map ISO 9001 cl. 7.5 document control requirements to SharePoint features","Configure Microsoft Purview Audit Log for ISO 27001 evidence","Support ISO 20000-1 change management processes via SharePoint Lists and Power Automate","Implement automated document review reminders for ISO compliance","Prepare audit evidence packages from SharePoint and Microsoft Purview"],
+  concepts:[
+    {h:"ISO 9001 cl. 7.5",p:"Documented information control: availability, identification, protection, distribution, retrieval, storage, preservation, and disposal. SharePoint delivers all eight."},
+    {h:"ISO 27001 A.9.2",p:"User access management: provisioning, privilege management, periodic access review (Azure AD Access Reviews), removal. All auditable in M365."},
+    {h:"ISO 27001 Audit Log",p:"Microsoft Purview Unified Audit Log captures file access, permission changes, sharing events, admin actions. Retained 90 days (standard) to 10 years (Premium)."},
+    {h:"ISO 20000-1 CMDB",p:"Configuration Management Database. SharePoint Lists can serve as lightweight CMDBs tracking CIs with Power Automate change workflows."},
+    {h:"Nonconformity Tracking",p:"SharePoint Lists with Power Automate workflows support ISO 9001/ISO 27001 nonconformity, corrective action, and root cause tracking."},
+    {h:"Audit Evidence",p:"Documents, screenshots, export reports, and audit log extracts that demonstrate control implementation — stored in SharePoint for auditor access."}
+  ],
+  keyPoints:[
+    "ISO 9001 cl. 7.5 requires version control, access restriction, review cycles, and change tracking — SharePoint delivers all natively",
+    "Microsoft Purview Audit Log must be ENABLED before any compliance program — it does not auto-backfill historical events",
+    "Azure AD Access Reviews provide periodic certification of access rights — directly satisfies ISO 27001 A.9.2.6",
+    "Power Automate scheduled flows can automate document review reminders with escalation logic",
+    "Sensitivity labels applied to documents support ISO 27001 information classification (A.8.2) requirements",
+    "SharePoint 'Check In Required' + Content Approval supports ISO 9001 document control change approval requirements"
+  ],
+  alerts:[
+    {type:"danger",text:"🚨 Microsoft Purview Audit Log must be explicitly enabled (it is on by default in most M365 plans, but verify). Audit data cannot be retroactively retrieved."},
+    {type:"warn",text:"⚠️ Standard Audit Log retention is only 90 days. For ISO 27001 (which may require 1-year retention), upgrade to Audit Premium or export logs to SIEM."},
+    {type:"info",text:"ℹ️ Microsoft Compliance Manager includes pre-built assessment templates for ISO 27001, ISO 27701, and NIST SP 800-171 mapped to M365 controls."},
+    {type:"success",text:"✅ Use the 'Compliance Score' in Microsoft Purview as a dashboard for ongoing ISO/CMMC readiness — share with auditors as evidence of continuous monitoring."}
+  ],
+  videos:[
+    {id:"oJybRn1BHl4",title:"How to Use SharePoint for ISO Accreditation (Step-by-Step)",ch:"ISO Expert"},
+    {id:"7vwj5RieUyY",title:"Audit Logs for SharePoint Online — Complete Guide",ch:"SharePoint Maven"}
+  ],
+  questions:[
+    {
+      type:"knowledge",
+      q:"ISO 9001:2015 clause 7.5 requires controlled documented information. Which SharePoint features BEST map to these requirements?",
+      opts:["SharePoint Recycle Bin + Site Activity Log","Document libraries with version history + approval workflows + content types + retention labels + access permissions","SharePoint Search + metadata tagging + Power BI reports","OneDrive sync + co-authoring + presence indicators"],
+      ans:1,
+      exp:"ISO 9001 cl. 7.5 requires: availability (libraries + access control), identification (content types + metadata), protection (permissions + sensitivity labels), distribution control (sharing settings), change control (version history + approval workflows), and lifecycle management (retention labels + archive). SharePoint delivers all eight documented information controls natively."
+    },
+    {
+      type:"scenario",
+      scenario:"During an ISO 27001 audit, the auditor requests: (a) who accessed sensitive documents in the past 90 days, (b) all permission changes to a specific SharePoint site, (c) all failed access attempts.",
+      q:"Where does a SharePoint admin find ALL THREE evidence types?",
+      opts:["SharePoint Site Settings > Site Information for access logs; SharePoint Admin Center > Reports for permission changes","Microsoft Purview Compliance Portal > Audit > Audit Log Search — covers all three evidence types for SharePoint activity","Microsoft Defender for Cloud Apps dashboard only","SharePoint Admin Center > Active Sites > Usage reports"],
+      ans:1,
+      exp:"Microsoft Purview Unified Audit Log Search is the single source for all three evidence types: FileAccessed (document access), SharingPermissionChanged/PermissionsChanged (permission changes), and failed access events. It covers all Microsoft 365 services including SharePoint. Retained 90 days standard, up to 10 years with Audit Premium."
+    },
+    {
+      type:"knowledge",
+      q:"How can SharePoint support ISO 20000-1 Configuration Management and Change Management requirements?",
+      opts:["SharePoint cannot support ITSM; use dedicated tools (ServiceNow, Jira) exclusively","SharePoint Lists can serve as lightweight CMDB for CI tracking; Power Automate can provide change request approval workflows; document libraries store change records — complementary to dedicated ITSM tools","SharePoint has built-in ISO 20000-1 templates that auto-configure CMDB","SharePoint supports ITSM only through Microsoft Teams integration"],
+      ans:1,
+      exp:"SharePoint can support ISO 20000-1 as a platform component: Lists for CI inventory (name, type, owner, status), Power Automate for change request workflows with approvals and audit trail, and document libraries for RFC documentation and change records. It works alongside or can substitute for dedicated ITSM tools in lighter-weight scenarios."
+    },
+    {
+      type:"scenario",
+      scenario:"Your organization is preparing for its first ISO 27001 audit. The auditor requests: (1) a list of information assets in SharePoint, (2) their classification, (3) who has access.",
+      q:"What M365 feature combination produces this evidence?",
+      opts:["SharePoint Admin Center > Reports > File Activity (provides complete asset register with classification)","Microsoft Purview (data classification + sensitivity labels for asset classification) + Azure AD Access Reviews (access evidence) + SharePoint Admin Center Active Sites report (site inventory)","SharePoint site usage reports + manual spreadsheet","Viva Insights + Microsoft Graph API queries"],
+      ans:1,
+      exp:"ISO 27001 Information Asset Register requires: (1) Asset inventory: SharePoint Admin Center Active Sites export, (2) Data classification: Microsoft Purview sensitivity labels and data classification reports show what's labeled and how, (3) Access evidence: Azure AD Access Reviews demonstrate who has access and that it was periodically reviewed and certified."
+    },
+    {
+      type:"scenario",
+      scenario:"An ISO 9001 audit finding reveals document owners are NOT completing required annual reviews. You need to implement an automated control in SharePoint.",
+      q:"What is the MOST EFFECTIVE automated solution?",
+      opts:["Send manual email reminders to document owners each December","Configure a Power Automate scheduled flow that checks a 'Next Review Date' column monthly, notifies owners of upcoming/overdue reviews, and escalates to their manager if not reviewed within 14 days","Apply 1-year retention labels that force re-upload after one year","Configure SharePoint Alerts to notify owners when documents are modified"],
+      ans:1,
+      exp:"The automated review system addresses ISO 9001 cl. 7.5 document review: (1) 'Next Review Date' metadata column tracks due dates, (2) Monthly scheduled flow identifies upcoming/overdue reviews, (3) Automated notifications with document links prompt action, (4) Escalation logic ensures management oversight of non-compliance. This creates a documented, auditable, automated compliance control — far more reliable than manual emails."
+    }
+  ]
+},
+{
+  id:9, icon:"🏆", title:"Capstone Assessment", shortTitle:"Capstone", isCapstone:true,
+  desc:"Scenario-based final assessment covering all modules. Simulates real GAMA-1 SharePoint administrator decision-making across governance, compliance, security, and integration challenges.",
+  questions:[
+    {
+      type:"multi-concept",
+      scenario:"GAMA-1 is configuring a new SharePoint GCC tenant for their IMS covering ISO 9001, ISO 20000-1, ISO 27001, and CMMC Level 2. You are the SharePoint Administrator starting from scratch.",
+      q:"What is the FIRST architectural decision you must make before creating any sites?",
+      opts:["Decide hub site vs. single site collection structure","Determine the data classification scheme (CUI, FCI, Internal, Public) to establish information architecture and permission boundaries","Select the SharePoint theme and branding for the IMS portal","Choose between SharePoint Online and SharePoint Server On-Premises"],
+      ans:1,
+      exp:"In a compliance-driven environment, data classification drives all architecture decisions. Understanding what CUI, FCI, and internal data exists determines site structure, permission isolation, DLP policies, and retention requirements. Building sites before classification leads to costly compliance retrofits."
+    },
+    {
+      type:"multi-concept",
+      scenario:"A business unit director requests integrating their SharePoint site with an external vendor API via Power Automate to pull project status updates automatically.",
+      q:"What should the admin assess FIRST before approving this integration?",
+      opts:["Whether Power Automate technically supports the vendor's API","Whether the API connector is in your CMMC-approved connector list, whether data exchanged contains CUI/FCI, and whether the connection is documented in your System Security Plan (SSP)","The cost of the Power Automate premium connector license","Whether the business unit has budget approval for the integration"],
+      ans:1,
+      exp:"In a CMMC Level 2/GCC environment, all external system connections must be documented in the SSP and evaluated for CUI data flows, security controls, and connector DLP policy compliance. The SharePoint admin enables solutions within governance boundaries — not unilaterally approving security-impacting integrations."
+    },
+    {
+      type:"multi-concept",
+      scenario:"You configure permissions for a Finance team processing CUI financial data. Three roles: analysts (read+edit), managers (read+edit+approve), auditors (read-only, no download).",
+      q:"What is the CORRECT least-privilege permission implementation?",
+      opts:["Add all three groups to Site Members (Contribute) and manage access at folder level","Create three Azure AD Security Groups; create custom permission levels for each role; break inheritance on the sensitive library and assign appropriately — including a custom 'Read No Download' level for auditors","Grant Site Owner to managers, Site Member to analysts, Site Visitor to auditors","Use SharePoint's default permission levels: Full Control for managers, Contribute for analysts, View Only for auditors"],
+      ans:1,
+      exp:"Least privilege requires exact permission levels per role. Default permission levels include unnecessary permissions. Custom permission levels remove unneeded capabilities (e.g., 'Open Items' for auditors blocks download). Azure AD Security Groups provide centrally governed, auditable membership. This satisfies CMMC AC.1.002 and ISO 27001 A.9.2.3."
+    },
+    {
+      type:"multi-concept",
+      scenario:"An ISO 27001 audit finding: 'Access to sensitive information in SharePoint is not periodically reviewed, creating a risk of privilege accumulation (access creep).'",
+      q:"What Microsoft 365 control DIRECTLY addresses this finding?",
+      opts:["Enable SharePoint Site Expiration Policies for all sites","Implement Azure AD Access Reviews for SharePoint site membership groups, scheduled quarterly, with auto-revoke if not confirmed","Require monthly re-authentication using Conditional Access policies","Enable Microsoft Defender for Cloud Apps to monitor access patterns"],
+      ans:1,
+      exp:"Azure AD Access Reviews directly address privilege accumulation (ISO 27001 A.9.2.6). Reviewers periodically confirm whether each member still requires access; unconfirmed access is auto-revoked. This creates documented audit evidence of periodic access certification — exactly what the auditor requires."
+    },
+    {
+      type:"multi-concept",
+      scenario:"A CMMC assessment gap: no documented process for detecting unauthorized CUI access attempts in SharePoint. You need a detective control.",
+      q:"What is the MOST COMPREHENSIVE Microsoft 365 detective control solution?",
+      opts:["Enable SharePoint Alerts for all CUI document libraries","Configure Microsoft Defender for Cloud Apps (MDCA) policies to alert on suspicious CUI-labeled content access, combined with Microsoft Purview Audit Log monitoring and SIEM integration via Microsoft Sentinel","Review SharePoint Admin Center usage reports weekly","Implement Conditional Access policies blocking access outside business hours"],
+      ans:1,
+      exp:"Comprehensive CMMC detective controls require: (1) MDCA for real-time anomaly detection (mass downloads, unusual access patterns), (2) Purview Audit Log for forensic evidence collection, (3) Sentinel SIEM integration for automated correlation and incident response. This addresses CMMC practices AU.2.041, AU.2.042, and IR.2.092."
+    },
+    {
+      type:"multi-concept",
+      scenario:"A new team member needs: SharePoint IMS site (read access), Quality Management library (read+edit), Finance site (NO access). Manager submits request via email.",
+      q:"What is the governance-compliant access provisioning process?",
+      opts:["Add the user directly to relevant SharePoint groups based on the manager's email request","Route the request through an approved access request workflow (Forms + Power Automate manager approval); document the access grant with justification; provision via Azure AD Security Group membership; record in the access log","Grant access to everything the user might need to avoid future requests","Have the user request access themselves via SharePoint's built-in access request feature"],
+      ans:1,
+      exp:"CMMC Level 2 (AC.1.001, AC.1.002) and ISO 27001 (A.9.2.2) require a formal, documented access provisioning process with data owner/manager authorization. A workflow creates audit evidence (who requested, who approved, what access, when) required for compliance audits. Direct provisioning from emails lacks documentation and violates change management controls."
+    },
+    {
+      type:"multi-concept",
+      scenario:"Three SharePoint sites in GCC contain a mix of CUI and non-CUI documents in the same libraries. The compliance officer requires CUI data to be isolated.",
+      q:"What is the CORRECT remediation approach?",
+      opts:["Rename CUI documents with '[CUI]' prefix to distinguish them visually","Create dedicated CUI site collections with restricted access; apply CUI sensitivity labels via Microsoft Purview; configure DLP to detect and block unauthorized CUI sharing; migrate CUI content to the dedicated sites","Create a separate CUI folder within each library with extra permissions","Encrypt all CUI documents with Microsoft Information Protection so they can remain in any location"],
+      ans:1,
+      exp:"CUI isolation best practice requires structural separation. A dedicated CUI site collection provides: (1) independent permission boundary, (2) separate storage quota tracking, (3) simplified auditing scope. Sensitivity labels + DLP add classification and enforcement layers. Folder-level isolation (option C) creates governance complexity and doesn't provide strong permission boundaries."
+    },
+    {
+      type:"multi-concept",
+      scenario:"You discover a department's Power Automate flow — approved in error — is sending emails about internal project status to external contacts, potentially including FCI. You discover this during a compliance review.",
+      q:"What is your IMMEDIATE response as SharePoint/Power Platform admin?",
+      opts:["Email the department head asking them to stop the flow","Immediately disable the flow in Power Platform Admin Center; revoke connection credentials; document the incident; notify the Compliance Officer; initiate review of all other department flows for similar risks","Add the external domain to a DLP block list to prevent future sends","Delete the flow and recreate without the external email connector"],
+      ans:1,
+      exp:"This is a data incident requiring CMMC IR.2.092 response: (1) Stop exfiltration by disabling the flow, (2) Revoke compromised connection credentials, (3) Document as a formal incident per IR policy, (4) Notify Compliance Officer for potential DFARS reporting. Additionally conduct a comprehensive review of all tenant flows — this indicates a systemic DLP governance failure."
+    },
+    {
+      type:"multi-concept",
+      scenario:"You're preparing SharePoint for an ISO 9001 surveillance audit in 6 weeks. The auditor will review document control (cl. 7.5), management review records (cl. 9.3), and corrective actions (cl. 10.2).",
+      q:"What is your CORRECT audit readiness priority checklist?",
+      opts:["Create new document templates and upload sample documents to demonstrate the system","Verify: (1) all required documents have current approval + version history, (2) retention labels preserve records, (3) permissions restrict editing to authorized users, (4) search finds all required documents, (5) audit logs are enabled, (6) all document review dates are current","Complete a full SharePoint redesign to improve the auditor's experience","Export all documents to PDF and organize in a single audit evidence folder"],
+      ans:1,
+      exp:"Audit readiness focuses on evidence integrity, not presentation. The checklist maps directly to ISO 9001 cl. 7.5: document status (approval + versioning), records preservation (retention labels), access control (permissions), retrieval (search), auditability (audit logs enabled), and ongoing compliance (review dates current). These are exactly what ISO auditors examine as objective evidence."
+    },
+    {
+      type:"multi-concept",
+      scenario:"The SharePoint admin receives simultaneous urgent requests from: (1) Finance — invoice approval workflow, (2) IT — SharePoint-Teams integration for new project, (3) Legal — information barrier between contracts teams, (4) HR — new site for sensitive personnel files.",
+      q:"How should the SharePoint admin PRIORITIZE these requests?",
+      opts:["Handle all four simultaneously by delegating to business units to build their own solutions","Prioritize by compliance impact and risk: (1) HR personnel files (data privacy/ISO 27001 risk), (2) Legal information barriers (legal compliance risk), (3) Finance approval workflow (operational compliance), (4) IT Teams integration (lower compliance risk)","Process requests in first-in, first-out order regardless of risk","Ask IT leadership to prioritize from a purely business impact perspective"],
+      ans:1,
+      exp:"A SharePoint administrator in a governed environment must prioritize by compliance and risk impact, not just arrival order. Sensitive personal data (HR) and legal barriers carry the highest compliance risk (GDPR, litigation exposure), followed by operational compliance (Finance), then lower-risk integrations (IT/Teams). A formal intake process with risk scoring prevents ad-hoc prioritization and aligns with ISO 20000-1 service request management."
+    }
+  ]
+}
+];
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let currentMod = 0;
+let progress = JSON.parse(localStorage.getItem('sp_course_progress')||'{}');
+let adminUnlocked = false;
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+function buildSidebar(){
+  const sb = document.getElementById('sidebar');
+  let html = '<div class="sb-label">Course Modules</div>';
+  MODULES.forEach(m=>{
+    const done = progress[m.id]?.done;
+    const active = m.id===currentMod;
+    html+=`<div class="sb-item${active?' active':''}${done?' done':''}" onclick="navTo(${m.id})">
+      <span class="sb-num">${m.isOverview?'🏠':m.isCapstone?'🏆':m.id}</span>
+      <span class="sb-text">${m.shortTitle||m.title}</span>
+      <span class="sb-status">${done?'✅':active?'▶':'○'}</span>
+    </div>`;
+  });
+  sb.innerHTML=html;
+}
+
+function navTo(id){
+  currentMod=id;
+  buildSidebar();
+  renderMain();
+  window.scrollTo(0,0);
+}
+
+/* ============================================================
+   PROGRESS
+   ============================================================ */
+function updateProgress(){
+  const done = MODULES.filter(m=>!m.isOverview&&progress[m.id]?.done).length;
+  const total = MODULES.filter(m=>!m.isOverview).length;
+  const pct = Math.round(done/total*100);
+  document.getElementById('progBar').style.width=pct+'%';
+  document.getElementById('hdrProgress').textContent=`${done} / ${total} modules complete`;
+}
+
+/* ============================================================
+   RENDER MAIN
+   ============================================================ */
+function renderMain(){
+  const m = MODULES.find(x=>x.id===currentMod);
+  const el = document.getElementById('main');
+  el.innerHTML='';
+  el.className='main fade-in';
+  if(m.isOverview){renderOverview(el);return;}
+  if(m.isCapstone){renderCapstone(el,m);return;}
+  renderModule(el,m);
+}
+
+function renderOverview(el){
+  let html=`<div class="mod-badge">📋 SharePoint Admin Professional Course</div>
+  <h2 class="mod-h2">GAMA-1 IMS SharePoint Administrator Course</h2>
+  <p class="mod-desc">This course prepares you for the SharePoint Administrator role at GAMA-1, covering governance, compliance (CMMC Level 2, NIST SP 800-171, ISO 9001/20000-1/27001), Power Platform integration, and Microsoft 365 ecosystem management in a GCC environment. Complete all 8 modules and the capstone assessment.</p>
+  <div class="ov-grid">`;
+  MODULES.filter(m=>!m.isOverview).forEach(m=>{
+    const done=progress[m.id]?.done;
+    const score=progress[m.id]?.score;
+    html+=`<div class="ov-card${done?' done':''}" onclick="navTo(${m.id})">
+      <div class="ov-icon">${m.icon}</div>
+      <h4>${m.shortTitle||m.title}</h4>
+      <p>${m.isCapstone?'Final Scenario Assessment':'5 Questions · Video Lessons'}</p>
+      ${score!==undefined?`<span class="ov-score">Score: ${score}%</span>`:''}
+    </div>`;
+  });
+  html+=`</div>
+  <div class="card"><div class="card-hdr"><span class="card-icon">📊</span><h3>Required Qualifications Coverage</h3></div>
+  <div class="card-body">
+  <table class="tbl"><thead><tr><th>Qualification</th><th>Course Module</th><th>Status</th></tr></thead><tbody>
+  <tr><td>SharePoint architecture, sites, libraries, metadata</td><td>Module 1</td><td>${progress[1]?.done?'✅ Complete':'📌 Pending'}</td></tr>
+  <tr><td>Permissions, RBAC, least privilege</td><td>Module 2</td><td>${progress[2]?.done?'✅ Complete':'📌 Pending'}</td></tr>
+  <tr><td>Microsoft 365 GCC, CMMC Level 2, NIST SP 800-171</td><td>Module 3</td><td>${progress[3]?.done?'✅ Complete':'📌 Pending'}</td></tr>
+  <tr><td>Governance, taxonomy, lifecycle management</td><td>Module 4</td><td>${progress[4]?.done?'✅ Complete':'📌 Pending'}</td></tr>
+  <tr><td>Document control, records, retention</td><td>Module 5</td><td>${progress[5]?.done?'✅ Complete':'📌 Pending'}</td></tr>
+  <tr><td>Power Platform (Power Automate, Power Apps, Power BI)</td><td>Module 6</td><td>${progress[6]?.done?'✅ Complete':'📌 Pending'}</td></tr>
+  <tr><td>Teams, OneDrive, hub site integration</td><td>Module 7</td><td>${progress[7]?.done?'✅ Complete':'📌 Pending'}</td></tr>
+  <tr><td>ISO 9001/20000-1/27001 compliance & audit readiness</td><td>Module 8</td><td>${progress[8]?.done?'✅ Complete':'📌 Pending'}</td></tr>
+  </tbody></table></div></div>`;
+  el.innerHTML=html;
+}
+
+function renderModule(el,m){
+  let html=`<div class="mod-badge">${m.icon} Module ${m.id} of 8</div>
+  <h2 class="mod-h2">${m.title}</h2>
+  <p class="mod-desc">${m.desc}</p>`;
+
+  // Objectives
+  html+=`<div class="card"><div class="card-hdr"><span class="card-icon">🎯</span><h3>Learning Objectives</h3></div><div class="card-body">
+  <ul class="kp-list">${m.objectives.map(o=>`<li>${o}</li>`).join('')}</ul></div></div>`;
+
+  // Concepts
+  html+=`<div class="card"><div class="card-hdr"><span class="card-icon">💡</span><h3>Key Concepts</h3></div><div class="card-body">
+  <div class="concept-grid">${m.concepts.map(c=>`<div class="concept-item"><h4>${c.h}</h4><p>${c.p}</p></div>`).join('')}</div></div></div>`;
+
+  // Key Points
+  html+=`<div class="card"><div class="card-hdr"><span class="card-icon">📌</span><h3>Must-Know Points</h3></div><div class="card-body">
+  <ul class="kp-list">${m.keyPoints.map(p=>`<li>${p}</li>`).join('')}</ul></div></div>`;
+
+  // Alerts
+  if(m.alerts?.length){
+    html+=`<div class="card"><div class="card-hdr"><span class="card-icon">⚠️</span><h3>Important Notes & Warnings</h3></div><div class="card-body">
+    ${m.alerts.map(a=>`<div class="alert alert-${a.type}">${a.text}</div>`).join('')}</div></div>`;
+  }
+
+  // Videos
+  html+=`<div class="card"><div class="card-hdr"><span class="card-icon">🎬</span><h3>Video Lessons</h3></div><div class="card-body">`;
+  if(m.videos.length===1){
+    html+=`<div class="vid-wrap"><iframe src="https://www.youtube.com/embed/${m.videos[0].id}?rel=0&modestbranding=1" allowfullscreen loading="lazy"></iframe></div>
+    <p class="vid-caption">${m.videos[0].title} — ${m.videos[0].ch}</p>`;
+  } else {
+    html+=`<div class="vid-grid">`;
+    m.videos.forEach(v=>{
+      html+=`<div><div class="vid-wrap"><iframe src="https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1" allowfullscreen loading="lazy"></iframe></div>
+      <p class="vid-caption">${v.title}<br><em>${v.ch}</em></p></div>`;
+    });
+    html+=`</div>`;
+  }
+  html+=`</div></div>`;
+
+  // Assessment
+  html+=buildQuiz(m, false);
+
+  el.innerHTML=html;
+}
+
+function renderCapstone(el,m){
+  let html=`<div class="mod-badge">🏆 Capstone Assessment</div>
+  <h2 class="mod-h2">${m.title}</h2>
+  <p class="mod-desc">${m.desc}</p>
+  <div class="alert alert-info">ℹ️ This 10-question scenario assessment integrates concepts from all 8 modules. Each question presents a real-world GAMA-1 SharePoint admin decision. Complete all modules before attempting the capstone.</div>`;
+  html+=buildQuiz(m, true);
+  el.innerHTML=html;
+}
+
+/* ============================================================
+   QUIZ ENGINE
+   ============================================================ */
+function buildQuiz(m, isCapstone){
+  const qCount=m.questions.length;
+  let html=`<div class="card" id="quiz-${m.id}">
+  <div class="quiz-hdr">
+    <h3>${isCapstone?'🏆 Capstone Assessment':'📝 Knowledge Assessment'}</h3>
+    <span>${qCount} Questions · Scenario-Based</span>
+  </div>`;
+
+  m.questions.forEach((q,qi)=>{
+    html+=`<div class="q-block" id="qblock-${m.id}-${qi}">
+    <span class="q-type">${q.type}</span>`;
+    if(q.scenario) html+=`<div class="q-scenario">📋 Scenario: ${q.scenario}</div>`;
+    html+=`<p class="q-text">Q${qi+1}. ${q.q}</p>
+    <ul class="opts">`;
+    q.opts.forEach((opt,oi)=>{
+      html+=`<li class="opt" id="opt-${m.id}-${qi}-${oi}" onclick="selectOpt(${m.id},${qi},${oi})">
+        <input type="radio" name="q-${m.id}-${qi}" value="${oi}" onclick="event.stopPropagation()">
+        <span class="opt-label">${String.fromCharCode(65+oi)}. ${opt}</span>
+        <span class="opt-ind" id="ind-${m.id}-${qi}-${oi}"></span>
+      </li>`;
+    });
+    html+=`</ul>
+    <div class="feedback fb-ok" id="fb-ok-${m.id}-${qi}">✅ Correct! ${q.exp}</div>
+    <div class="feedback fb-no" id="fb-no-${m.id}-${qi}">❌ Incorrect. ${q.exp}</div>
+    </div>`;
+  });
+
+  html+=`<div style="padding:16px 18px;">
+    <button class="btn-submit" id="submit-${m.id}" onclick="submitQuiz(${m.id})">Submit Answers</button>
+  </div>
+  <div id="result-${m.id}" style="display:none;"></div>
+  </div>`;
+  return html;
+}
+
+let selections={};
+
+function selectOpt(mid,qi,oi){
+  const key=`${mid}-${qi}`;
+  selections[key]=oi;
+  const q=MODULES.find(m=>m.id===mid).questions[qi];
+  q.opts.forEach((_,i)=>{
+    document.getElementById(`opt-${mid}-${qi}-${i}`)?.classList.remove('selected');
+  });
+  document.getElementById(`opt-${mid}-${qi}-${oi}`)?.classList.add('selected');
+  const radio=document.querySelector(`#opt-${mid}-${qi}-${oi} input`);
+  if(radio) radio.checked=true;
+}
+
+function submitQuiz(mid){
+  const m=MODULES.find(x=>x.id===mid);
+  const btn=document.getElementById(`submit-${mid}`);
+  let correct=0;
+
+  m.questions.forEach((q,qi)=>{
+    const key=`${mid}-${qi}`;
+    const sel=selections[key];
+    const isCorrect=sel===q.ans;
+    if(isCorrect) correct++;
+
+    q.opts.forEach((_,oi)=>{
+      const el=document.getElementById(`opt-${mid}-${qi}-${oi}`);
+      const ind=document.getElementById(`ind-${mid}-${qi}-${oi}`);
+      if(!el) return;
+      el.style.cursor='default';
+      el.onclick=null;
+      if(oi===q.ans){ el.classList.add('correct'); if(ind)ind.textContent='✅';}
+      else if(oi===sel){ el.classList.add('wrong'); if(ind)ind.textContent='❌';}
+    });
+
+    const fbOk=document.getElementById(`fb-ok-${mid}-${qi}`);
+    const fbNo=document.getElementById(`fb-no-${mid}-${qi}`);
+    if(isCorrect){ if(fbOk)fbOk.style.display='block';}
+    else{ if(fbNo)fbNo.style.display='block';}
+  });
+
+  btn.style.display='none';
+  const total=m.questions.length;
+  const pct=Math.round(correct/total*100);
+  const pass=pct>=80;
+  const fillClass=pct>=80?'fill-pass':pct>=60?'fill-warn':'fill-fail';
+
+  progress[mid]={done:pass||progress[mid]?.done, score:pct};
+  localStorage.setItem('sp_course_progress',JSON.stringify(progress));
+  updateProgress();
+  buildSidebar();
+
+  let resultHtml=`<div class="quiz-result">
+    <div class="qs-score">${pct}%</div>
+    <div class="qs-label">${correct} of ${total} correct — ${pass?'✅ PASSED':'📚 Review Recommended'}</div>
+    <div class="score-bar"><div class="score-fill ${fillClass}" style="width:${pct}%"></div></div>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">${pass?'Excellent work! You can proceed to the next module.':'Review the explanations above and retry to reach 80%+ to pass.'}</p>
+    <button class="btn-retry" onclick="retryQuiz(${mid})">🔄 Retry</button>`;
+
+  const nextMod=MODULES.find(x=>x.id===mid+1);
+  if(nextMod) resultHtml+=`<button class="btn-next" onclick="navTo(${mid+1})">Next: ${nextMod.shortTitle||nextMod.title} →</button>`;
+  if(mid===9 && pass) resultHtml+=`<div id="cert-area" style="margin-top:20px;">${buildCert()}</div>`;
+  resultHtml+=`</div>`;
+
+  document.getElementById(`result-${mid}`).innerHTML=resultHtml;
+  document.getElementById(`result-${mid}`).style.display='block';
+}
+
+function retryQuiz(mid){
+  const m=MODULES.find(x=>x.id===mid);
+  m.questions.forEach((_,qi)=>{
+    delete selections[`${mid}-${qi}`];
+  });
+  navTo(mid);
+}
+
+function buildCert(){
+  const allDone=MODULES.filter(m=>!m.isOverview).every(m=>progress[m.id]?.done);
+  const scores=MODULES.filter(m=>!m.isOverview&&progress[m.id]?.score!==undefined).map(m=>progress[m.id].score);
+  const avg=scores.length?Math.round(scores.reduce((a,b)=>a+b,0)/scores.length):0;
+  return `<div class="cert">
+    <div style="font-size:40px;margin-bottom:12px;">🏅</div>
+    <h2>Certificate of Completion</h2>
+    <p>SharePoint Administrator Professional Course</p>
+    <p>GAMA-1 IMS | CMMC Level 2 | ISO 9001/20000-1/27001</p>
+    <div style="margin:16px 0;font-size:24px;font-weight:700;">${avg}% Average Score</div>
+    <p style="opacity:.75;font-size:11px;">Completed: ${new Date().toLocaleDateString()}</p>
+  </div>`;
+}
+
+/* ============================================================
+   ADMIN PANEL
+   ============================================================ */
+function openAdmin(){
+  document.getElementById('adminOverlay').classList.add('open');
+  if(!adminUnlocked){
+    document.getElementById('adminLoginArea').style.display='block';
+    document.getElementById('adminContent').style.display='none';
+  }
+}
+
+function closeAdmin(){
+  document.getElementById('adminOverlay').classList.remove('open');
+}
+
+function checkAdminPw(){
+  const pw=document.getElementById('adminPwInput').value;
+  if(pw===ADMIN_PW){
+    adminUnlocked=true;
+    document.getElementById('adminLoginArea').style.display='none';
+    const ac=document.getElementById('adminContent');
+    ac.style.display='flex';
+    ac.style.flexDirection='column';
+    buildAdminPanels();
+  } else {
+    document.getElementById('adminPwErr').textContent='Incorrect password. Try: SP@Admin2024';
+  }
+}
+
+function switchAdminTab(idx,btn){
+  document.querySelectorAll('.a-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.a-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(`apane${idx}`).classList.add('active');
+}
+
+function buildAdminPanels(){
+  // Panel 0: Answer Keys
+  let ak='';
+  MODULES.filter(m=>!m.isOverview&&m.questions).forEach(m=>{
+    ak+=`<div class="ak-mod"><div class="ak-mod-hdr">${m.icon} ${m.title}</div>`;
+    m.questions.forEach((q,qi)=>{
+      const correctOpt=q.opts[q.ans];
+      ak+=`<div class="ak-row">
+        <span class="ak-num">Q${qi+1}</span>
+        <div>
+          <div style="font-size:12px;margin-bottom:4px;">${q.q}</div>
+          <div class="ak-ans">✅ ${String.fromCharCode(65+q.ans)}. ${correctOpt}</div>
+          <div class="ak-exp">${q.exp}</div>
+        </div>
+      </div>`;
+    });
+    ak+=`</div>`;
+  });
+  document.getElementById('apane0').innerHTML=ak;
+
+  // Panel 1: Glossary
+  const terms=[
+    {t:"Site Collection",d:"Top-level SharePoint container with isolated permission boundary, storage quota, and admin scope. The fundamental governance unit in SharePoint."},
+    {t:"Hub Site",d:"A SharePoint site that aggregates associated sites for shared navigation, branding, and search scope without merging permissions."},
+    {t:"Content Type Hub",d:"A designated site collection whose content types are published to all other site collections in the tenant."},
+    {t:"Term Store",d:"Central managed metadata taxonomy service. Hierarchy: Term Groups → Term Sets → Terms."},
+    {t:"GCC (Government Community Cloud)",d:"Microsoft 365 cloud environment meeting FedRAMP Moderate. US datacenters. Supports most CMMC Level 2 implementations."},
+    {t:"GCC High",d:"Microsoft 365 environment meeting FedRAMP High. Data restricted to US persons. Required for ITAR and strict DoD contracts."},
+    {t:"CMMC Level 2",d:"Cybersecurity Maturity Model Certification Advanced level. 110 practices from NIST SP 800-171. Required for organizations processing CUI."},
+    {t:"CUI (Controlled Unclassified Information)",d:"Government information requiring specific safeguarding per Executive Order 13556. Triggers CMMC Level 2 requirements."},
+    {t:"FCI (Federal Contract Information)",d:"Information provided/generated under a federal contract. CMMC Level 1 (17 practices) is typically sufficient unless CUI is also present."},
+    {t:"Retention Label",d:"Microsoft Purview item-level label that travels with content, can declare records, and overrides retention policies. Granular lifecycle control."},
+    {t:"Preservation Hold Library",d:"Hidden SharePoint library that retains copies of content deleted or modified during legal holds or retention periods."},
+    {t:"Canvas Power App",d:"Microsoft Power App type that connects directly to SharePoint lists/libraries. Provides pixel-perfect UI control. Standard connectors only."},
+    {t:"DLP Policy (Power Platform)",d:"Data Loss Prevention policy in Power Platform Admin Center that classifies connectors as Business (approved) or Non-Business (blocked)."},
+    {t:"Azure AD Access Review",d:"Entra ID feature that periodically asks group owners/managers to certify membership. Auto-revokes access if not confirmed. Satisfies ISO 27001 A.9.2.6."},
+    {t:"List View Threshold",d:"SharePoint limit of 5,000 items returnable per view query on non-indexed columns. Exceeded queries cause timeouts."},
+    {t:"Least Privilege",d:"Security principle: grant only the minimum permissions required for a user to perform their specific role. Reduces attack surface."},
+    {t:"eDiscovery Hold",d:"Microsoft Purview mechanism that preserves all content matching search criteria regardless of retention policy or user deletion. Required for legal holds."},
+    {t:"Permission Inheritance",d:"SharePoint default: child objects inherit permissions from parent. Breaking inheritance creates unique permissions — use sparingly to avoid permission sprawl."}
+  ];
+  let gl='';
+  terms.forEach(t=>{
+    gl+=`<div class="gloss-item"><div class="gloss-term">${t.t}</div><div class="gloss-def">${t.d}</div></div>`;
+  });
+  document.getElementById('apane1').innerHTML=gl;
+
+  // Panel 2: Common Mistakes
+  const mistakes=[
+    {h:"Using 'Everyone except external users' in Members group",exp:"This grants Contribute access to all internal users on all 47+ sites — one of the most common audit findings. Audit quarterly and remove."},
+    {h:"Breaking inheritance on individual list items",exp:"Item-level permissions create unmanageable sprawl and audit failures. Design information architecture to avoid item-level permission needs."},
+    {h:"Implementing legal holds via permissions or labeling only",exp:"Legal holds must use Microsoft Purview eDiscovery Holds. Permissions can be changed; eDiscovery holds cannot be circumvented."},
+    {h:"Enabling self-service site creation without governance",exp:"Results in hundreds of abandoned, ungoverned sites. Disable self-service and implement a provisioning workflow with business justification."},
+    {h:"Using SharePoint Groups instead of Azure AD Security Groups",exp:"SharePoint Groups are site-scoped, requiring per-site management. Azure AD Security Groups are tenant-wide, central, and auditable — always preferred."},
+    {h:"Not enabling Microsoft Purview Audit Log before compliance programs",exp:"Audit data cannot be retroactively retrieved. Enable before any compliance program. Default retention is only 90 days — extend for ISO 27001."},
+    {h:"Assuming hub association creates permission isolation",exp:"Hub sites share navigation/branding/search but NOT permissions. Sites remain independent. Hub association does not restrict access."},
+    {h:"Using Power Automate flows without DLP policy review in GCC",exp:"Unsanctioned connectors can exfiltrate CUI to external services. All connectors must be classified in DLP policies BEFORE flows go live."},
+    {h:"Confusing Retention Policies and Retention Labels",exp:"Policies are location-based (broad). Labels are item-level (granular, portable, can declare records). Use both: policies as baseline, labels for specific document types."},
+    {h:"Creating deep subsite hierarchies",exp:"Modern SharePoint governance favors flat architectures. Deep subsites create permission management complexity and are difficult to migrate. Use hub associations instead."}
+  ];
+  let mm='';
+  mistakes.forEach((mis,i)=>{
+    mm+=`<div class="gloss-item"><div class="gloss-term" style="color:var(--danger);">⚠️ ${i+1}. ${mis.h}</div><div class="gloss-def">${mis.exp}</div></div>`;
+  });
+  document.getElementById('apane2').innerHTML=mm;
+
+  // Panel 3: Learning Objectives
+  let lo='';
+  MODULES.filter(m=>!m.isOverview&&m.objectives).forEach(m=>{
+    lo+=`<div class="ak-mod"><div class="ak-mod-hdr">${m.icon} ${m.title}</div>
+    <div style="padding:12px 14px;"><ul class="kp-list">${m.objectives.map(o=>`<li>${o}</li>`).join('')}</ul></div></div>`;
+  });
+  document.getElementById('apane3').innerHTML=lo;
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+buildSidebar();
+renderMain();
+updateProgress();
+</script>
+</body>
+</html>
