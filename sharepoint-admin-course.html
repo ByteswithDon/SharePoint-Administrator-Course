@@ -1141,6 +1141,18 @@ function renderOverview(el){
   </div>
   <div class="ov-grid">`;
   MODULES.filter(m=>!m.isOverview).forEach(m=>{
+    const done=progress[m.id]?.done;
+    const score=progress[m.id]?.score;
+    html+=`<div class="ov-card${done?' done':''}" onclick="navTo(${m.id})">
+      <img src="${MODULE_ICONS[m.id]}" class="ov-card-icon">
+      <h4>${m.shortTitle||m.title}</h4>
+      <p>${m.desc?m.desc.substring(0,80)+'…':''}</p>
+      ${score!==undefined?`<div class="ov-score">${score}%</div>`:''}
+    </div>`;
+  });
+  html+=`</div>`;
+  el.innerHTML=html;
+}
 
 function renderModule(el,m){
   const illus=MODULE_ILLUS[m.id];
