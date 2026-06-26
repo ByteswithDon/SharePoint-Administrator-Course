@@ -71,16 +71,23 @@
   --border2:var(--cement);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;min-height:100vh;font-size:14px;-webkit-font-smoothing:antialiased;}
+body{font-family:'Outfit',system-ui,sans-serif;background:#f8f8f6;color:var(--text);display:flex;flex-direction:column;min-height:100vh;font-size:14px;-webkit-font-smoothing:antialiased;}
 
 /* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:6px;height:6px;}
-::-webkit-scrollbar-track{background:var(--bg2);}
-::-webkit-scrollbar-thumb{background:var(--cement);border-radius:3px;}
-::-webkit-scrollbar-thumb:hover{background:var(--cinder);}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:#f8f8f6;}
+::-webkit-scrollbar-thumb{background:var(--off-white);}
+
+/* ── SVG ICON UTILITY ── */
+.ico{display:inline-block;flex-shrink:0;width:18px;height:18px;object-fit:contain;filter:brightness(0);}
+.ico-sm{width:14px;height:14px;}
+.ico-lg{width:24px;height:24px;}
+.ico-xl{width:48px;height:48px;opacity:.9;}
+.ico-inv{filter:brightness(0) invert(1);}
+.ico-yel{filter:brightness(0) saturate(100%) invert(97%) sepia(72%) saturate(2934%) hue-rotate(322deg) brightness(107%) contrast(101%);}
 
 /* ── HEADER — Figma TopNav: black bg, white text, yellow accent ── */
-.hdr{background:var(--black);color:var(--white);position:sticky;top:0;z-index:200;}
+.hdr{background:var(--black);color:var(--white);position:sticky;top:0;z-index:200;border-bottom:1.5px solid #1a1a1a;}
 .hdr-top{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;}
 .hdr-brand{display:flex;align-items:center;gap:12px;}
 
@@ -99,205 +106,205 @@ body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--
 .hdr-right{display:flex;align-items:center;gap:14px;}
 .hdr-progress{font-size:11px;color:var(--cement);text-align:right;}
 .hdr-progress strong{color:var(--yellow);font-weight:700;}
-
-/* Figma Secondary Button on dark nav */
-.btn-sm{background:transparent;border:1px solid var(--slate);color:var(--white);padding:6px 14px;border-radius:var(--rad2);cursor:pointer;font-size:12px;font-family:inherit;font-weight:600;transition:all .15s;letter-spacing:.02em;}
+.btn-sm{background:transparent;border:1.5px solid var(--slate);color:var(--white);padding:6px 14px;border-radius:4px;cursor:pointer;font-size:12px;font-family:inherit;font-weight:600;transition:all .15s;display:inline-flex;align-items:center;gap:6px;}
 .btn-sm:hover{border-color:var(--yellow);color:var(--yellow);}
-.prog-bar-wrap{height:3px;background:rgba(255,255,255,.1);}
-.prog-bar{height:3px;background:var(--yellow);transition:width .6s cubic-bezier(.4,0,.2,1);}
+.btn-sm:hover .ico-inv{filter:brightness(0) saturate(100%) invert(97%) sepia(72%) saturate(2934%) hue-rotate(322deg) brightness(107%) contrast(101%);}
+.prog-bar-wrap{height:2px;background:rgba(255,255,255,.08);}
+.prog-bar{height:2px;background:var(--yellow);transition:width .6s cubic-bezier(.4,0,.2,1);}
 
 /* ── LAYOUT ── */
 .layout{display:flex;flex:1;}
 
-/* ── SIDEBAR ── */
-.sidebar{width:256px;background:var(--sidebar);border-right:1px solid var(--border);position:sticky;top:61px;height:calc(100vh - 61px);overflow-y:auto;flex-shrink:0;}
-.sb-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--cement);padding:20px 16px 6px;font-weight:700;}
-.sb-item{display:flex;align-items:center;padding:10px 16px;cursor:pointer;border-left:2px solid transparent;gap:10px;transition:all .15s;}
-.sb-item:hover{background:var(--card);border-left-color:var(--off-white);}
-.sb-item.active{background:var(--info-bg);border-left-color:var(--yellow);}
+/* ── SIDEBAR — line work: dark border, clean white ── */
+.sidebar{width:260px;background:#fff;border-right:1.5px solid var(--black);position:sticky;top:61px;height:calc(100vh - 61px);overflow-y:auto;flex-shrink:0;}
+.sb-label{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--cement);padding:18px 16px 6px;font-weight:700;border-bottom:1px solid var(--off-white);margin-bottom:4px;}
+.sb-item{display:flex;align-items:center;padding:10px 14px;cursor:pointer;border-left:2.5px solid transparent;gap:10px;transition:all .12s;}
+.sb-item:hover{background:#fafaf8;border-left-color:var(--off-white);}
+.sb-item.active{background:rgba(252,255,85,.1);border-left-color:var(--yellow);}
 .sb-item.active .sb-num{background:var(--yellow);color:var(--black);}
 .sb-item.done .sb-status{color:var(--success);}
-.sb-num{font-size:10px;font-weight:700;background:var(--card2);border-radius:3px;padding:2px 6px;min-width:26px;text-align:center;flex-shrink:0;color:var(--muted);transition:all .15s;}
-.sb-text{font-size:12px;line-height:1.4;flex:1;color:var(--text2);}
+.sb-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1.5px solid var(--off-white);border-radius:4px;background:#fff;}
+.sb-item.active .sb-icon{border-color:var(--yellow);background:rgba(252,255,85,.1);}
+.sb-num{font-size:10px;font-weight:800;min-width:20px;text-align:center;flex-shrink:0;color:var(--muted);transition:all .12s;font-variant-numeric:tabular-nums;}
+.sb-text{font-size:12px;line-height:1.35;flex:1;color:var(--elephant);}
 .sb-item.active .sb-text{color:var(--black);font-weight:600;}
-.sb-status{font-size:12px;flex-shrink:0;}
+.sb-status{font-size:11px;flex-shrink:0;color:var(--cement);}
+.sb-item.done .sb-status{color:var(--success);}
 
 /* ── MAIN ── */
-.main{flex:1;padding:28px 32px;max-width:900px;margin:0 auto;width:100%;}
+.main{flex:1;padding:28px 32px;max-width:880px;margin:0 auto;width:100%;}
 
-/* ── MODULE HERO (illustration + header text side by side) ── */
-.mod-hero{display:flex;align-items:center;gap:24px;margin-bottom:24px;}
+/* ── MODULE HERO ── */
+.mod-hero{display:flex;align-items:center;gap:28px;margin-bottom:28px;}
 .mod-hero-content{flex:1;}
 .mod-hero-illus{flex-shrink:0;width:140px;height:140px;}
 .mod-hero-illus img{width:100%;height:100%;object-fit:contain;}
 
 /* ── MODULE HEADER ── */
-.mod-badge{display:inline-flex;align-items:center;gap:6px;background:var(--info-bg);border:1px solid var(--yellow);color:var(--black);padding:4px 12px;border-radius:var(--rad1);font-size:10px;font-weight:700;margin-bottom:10px;letter-spacing:.08em;text-transform:uppercase;}
+.mod-badge{display:inline-flex;align-items:center;gap:6px;background:var(--yellow);border:1.5px solid var(--black);color:var(--black);padding:4px 12px;border-radius:3px;font-size:10px;font-weight:800;margin-bottom:12px;letter-spacing:.1em;text-transform:uppercase;}
 .mod-h2{font-size:28px;font-weight:700;margin-bottom:8px;color:var(--black);line-height:1.15;letter-spacing:-.02em;}
-.mod-desc{font-size:14px;color:var(--muted);line-height:1.7;max-width:680px;}
+.mod-desc{font-size:14px;color:var(--elephant);line-height:1.75;max-width:680px;}
 
-/* ── CARDS — Figma: white bg, 1px border, 16px radius ── */
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--rad3);margin-bottom:16px;overflow:hidden;}
-.card-hdr{padding:13px 18px;background:var(--card2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+/* ── CARDS — line work: dark border, header = border only, no fill ── */
+.card{background:#fff;border:1.5px solid var(--black);border-radius:4px;margin-bottom:16px;overflow:hidden;}
+.card-hdr{padding:12px 18px;background:transparent;border-bottom:1.5px solid var(--black);display:flex;align-items:center;gap:10px;}
 .card-hdr h3{font-size:13px;font-weight:700;color:var(--black);letter-spacing:.01em;}
-.card-icon{font-size:15px;}
 .card-body{padding:18px;}
 
-/* ── CONCEPT GRID ── */
-.concept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;}
-.concept-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rad2);padding:14px;border-left:3px solid var(--yellow);}
-.concept-item h4{font-size:12px;font-weight:700;color:var(--black);margin-bottom:6px;letter-spacing:.02em;}
-.concept-item p{font-size:12px;color:var(--muted);line-height:1.6;}
+/* ── CONCEPT GRID — outlined boxes ── */
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px;}
+.concept-item{background:#fff;border:1.5px solid var(--black);border-radius:4px;padding:14px;}
+.concept-item h4{font-size:11px;font-weight:800;color:var(--black);margin-bottom:6px;letter-spacing:.05em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--off-white);}
+.concept-item p{font-size:12px;color:var(--elephant);line-height:1.65;}
 
 /* ── KEY POINTS ── */
 .kp-list{list-style:none;}
-.kp-list li{padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;line-height:1.5;display:flex;gap:10px;color:var(--text2);}
+.kp-list li{padding:8px 0;border-bottom:1px solid var(--off-white);font-size:13px;line-height:1.55;display:flex;gap:10px;color:var(--text2);align-items:flex-start;}
 .kp-list li:last-child{border-bottom:none;}
-.kp-list li::before{content:"→";color:var(--black);font-weight:700;flex-shrink:0;}
+.kp-list li::before{content:"—";color:var(--black);font-weight:700;flex-shrink:0;margin-top:1px;}
 
-/* ── ALERTS ── */
-.alert{padding:11px 14px;border-radius:var(--rad2);margin-bottom:10px;font-size:12px;display:flex;gap:10px;align-items:flex-start;line-height:1.6;}
-.alert-info{background:var(--info-bg);border-left:3px solid var(--yellow);color:var(--slate);}
-.alert-warn{background:var(--warn-bg);border-left:3px solid var(--warn);color:var(--warn);}
-.alert-danger{background:var(--error-bg);border-left:3px solid var(--error);color:var(--error);}
-.alert-success{background:var(--success-bg);border-left:3px solid var(--success);color:var(--success);}
+/* ── ALERTS — line work: left bar + outlined box ── */
+.alert{padding:12px 16px;border:1.5px solid;border-radius:4px;margin-bottom:10px;font-size:12px;line-height:1.65;color:var(--slate);}
+.alert-info{background:rgba(252,255,85,.06);border-color:var(--yellow);}
+.alert-warn{background:var(--warn-bg);border-color:var(--warn);color:#92400e;}
+.alert-danger{background:var(--error-bg);border-color:var(--error);color:#991b1b;}
+.alert-success{background:var(--success-bg);border-color:var(--success);color:#166534;}
 
-/* ── TABLE ── */
+/* ── TABLE — line work grid ── */
 .tbl{width:100%;border-collapse:collapse;font-size:12px;}
-.tbl th{background:var(--bg2);padding:8px 10px;text-align:left;border:1px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;}
-.tbl td{padding:8px 10px;border:1px solid var(--border);vertical-align:top;color:var(--text2);}
-.tbl tr:nth-child(even) td{background:var(--bg2);}
+.tbl th{background:#f8f8f6;padding:8px 10px;text-align:left;border:1.5px solid var(--black);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--elephant);font-weight:800;}
+.tbl td{padding:8px 10px;border:1px solid var(--off-white);vertical-align:top;color:var(--text2);}
+.tbl tr:nth-child(even) td{background:#f8f8f6;}
 
 /* ── VIDEO ── */
-.vid-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000;border-radius:var(--rad2);margin-bottom:8px;border:1px solid var(--border);}
+.vid-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000;border-radius:4px;margin-bottom:8px;border:1.5px solid var(--black);}
 .vid-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
 .vid-caption{font-size:11px;color:var(--dim);text-align:center;margin-bottom:14px;}
 .vid-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 @media(max-width:600px){.vid-grid{grid-template-columns:1fr;}}
 
 /* ── QUIZ ── */
-.quiz-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--card2);border-bottom:1px solid var(--border);}
+.quiz-hdr{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;background:transparent;border-bottom:1.5px solid var(--black);}
 .quiz-hdr h3{font-size:13px;font-weight:700;color:var(--black);display:flex;align-items:center;gap:8px;}
-.quiz-hdr h3::before{content:'';display:inline-block;width:3px;height:14px;background:var(--yellow);border-radius:1px;}
-.quiz-hdr span{font-size:11px;background:var(--info-bg);border:1px solid var(--yellow);padding:3px 10px;border-radius:var(--rad1);color:var(--black);font-weight:700;}
-.q-block{padding:18px;border-bottom:1px solid var(--border);}
+.quiz-hdr span{font-size:10px;background:var(--yellow);border:1.5px solid var(--black);padding:3px 10px;border-radius:3px;color:var(--black);font-weight:800;letter-spacing:.04em;}
+.q-block{padding:18px;border-bottom:1px solid var(--off-white);}
 .q-block:last-of-type{border-bottom:none;}
-.q-scenario{background:var(--info-bg);border-left:2px solid var(--yellow);padding:10px 14px;border-radius:0 var(--rad2) var(--rad2) 0;font-size:12px;color:var(--slate);margin-bottom:12px;font-style:italic;line-height:1.6;}
-.q-type{display:inline-block;font-size:9px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);padding:2px 8px;border-radius:var(--rad1);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;}
+.q-scenario{background:rgba(252,255,85,.08);border:1.5px solid var(--yellow);padding:12px 14px;border-radius:4px;font-size:12px;color:var(--slate);margin-bottom:14px;line-height:1.65;}
+.q-scenario-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--black);display:block;margin-bottom:4px;}
+.q-type{display:inline-block;font-size:9px;background:#f8f8f6;border:1.5px solid var(--black);color:var(--elephant);padding:2px 8px;border-radius:3px;margin-bottom:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;}
 .q-text{font-size:14px;font-weight:600;margin-bottom:12px;line-height:1.5;color:var(--black);}
 .opts{list-style:none;}
-.opt{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--border);border-radius:var(--rad2);margin-bottom:8px;cursor:pointer;transition:all .15s;font-size:13px;line-height:1.5;color:var(--text2);}
-.opt:hover{background:var(--bg2);border-color:var(--cement);}
-.opt.selected{background:var(--info-bg);border-color:var(--yellow);color:var(--black);}
-.opt.correct{background:var(--success-bg);border-color:var(--success-border);color:var(--success);}
-.opt.wrong{background:var(--error-bg);border-color:var(--error-border);color:var(--error);}
-.opt.reveal{background:var(--success-bg);border-color:var(--success-border);color:var(--success);}
-.opt input[type=radio]{flex-shrink:0;margin-top:3px;accent-color:var(--yellow);}
-.opt-ind{font-size:13px;flex-shrink:0;}
-.feedback{margin-top:10px;padding:10px 14px;border-radius:var(--rad2);font-size:12px;line-height:1.6;display:none;}
-.fb-ok{background:var(--success-bg);color:var(--success);border-left:3px solid var(--success);}
-.fb-no{background:var(--error-bg);color:var(--error);border-left:3px solid var(--error);}
-
-/* Figma Primary Button: yellow bg + 2px black border + black text */
-.btn-submit{background:var(--yellow);color:var(--black);border:2px solid var(--black);padding:10px 24px;border-radius:var(--rad2);cursor:pointer;font-size:13px;font-weight:700;font-family:inherit;margin-top:16px;transition:all .15s;letter-spacing:.02em;}
-.btn-submit:hover{filter:brightness(.93);transform:translateY(-1px);}
-.btn-submit:disabled{background:var(--off-white);color:var(--muted);border-color:var(--border);cursor:not-allowed;transform:none;}
-.quiz-result{padding:28px 18px;text-align:center;background:var(--card2);border-top:1px solid var(--border);}
+.opt{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1.5px solid var(--off-white);border-radius:4px;margin-bottom:8px;cursor:pointer;transition:border-color .1s,background .1s;font-size:13px;line-height:1.5;color:var(--text2);background:#fff;}
+.opt:hover{border-color:var(--black);}
+.opt.selected{background:rgba(252,255,85,.12);border-color:var(--yellow);color:var(--black);}
+.opt.correct{background:var(--success-bg);border-color:var(--success);color:var(--success);}
+.opt.wrong{background:var(--error-bg);border-color:var(--error);color:var(--error);}
+.opt.reveal{background:var(--success-bg);border-color:var(--success);color:var(--success);}
+.opt input[type=radio]{flex-shrink:0;margin-top:3px;accent-color:var(--black);}
+.opt-ind{font-size:13px;flex-shrink:0;font-weight:800;margin-left:auto;}
+.opt.correct .opt-ind{color:var(--success);}
+.opt.wrong .opt-ind{color:var(--error);}
+.feedback{margin-top:10px;padding:11px 14px;border:1.5px solid;border-radius:4px;font-size:12px;line-height:1.65;display:none;}
+.fb-ok{background:var(--success-bg);color:#166534;border-color:var(--success);}
+.fb-no{background:var(--error-bg);color:#991b1b;border-color:var(--error);}
+.btn-submit{background:var(--yellow);color:var(--black);border:2px solid var(--black);padding:10px 24px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:800;font-family:inherit;margin-top:16px;transition:all .15s;letter-spacing:.02em;}
+.btn-submit:hover{filter:brightness(.93);}
+.btn-submit:disabled{background:var(--off-white);color:var(--muted);border-color:var(--off-white);cursor:not-allowed;}
+.quiz-result{padding:28px 18px;text-align:center;background:#f8f8f6;border-top:1.5px solid var(--black);}
 .qs-score{font-size:52px;font-weight:800;color:var(--black);line-height:1;margin-bottom:4px;letter-spacing:-.03em;}
 .qs-label{font-size:13px;color:var(--muted);margin-bottom:16px;}
-.score-bar{height:6px;background:var(--border);border-radius:3px;margin:12px 0;overflow:hidden;}
-.score-fill{height:100%;border-radius:3px;transition:width .9s cubic-bezier(.4,0,.2,1);}
+.score-bar{height:4px;background:var(--off-white);border-radius:2px;margin:12px 0;overflow:hidden;border:1px solid var(--off-white);}
+.score-fill{height:100%;border-radius:2px;transition:width .9s cubic-bezier(.4,0,.2,1);}
 .fill-pass{background:var(--success);}
 .fill-warn{background:var(--warn);}
 .fill-fail{background:var(--error);}
-.btn-retry{background:transparent;border:2px solid var(--black);color:var(--black);padding:8px 18px;border-radius:var(--rad2);cursor:pointer;font-size:12px;font-family:inherit;font-weight:700;margin-right:8px;transition:all .15s;}
+.btn-retry{background:transparent;border:2px solid var(--black);color:var(--black);padding:8px 20px;border-radius:4px;cursor:pointer;font-size:12px;font-family:inherit;font-weight:700;margin-right:8px;transition:all .15s;}
 .btn-retry:hover{background:var(--black);color:var(--white);}
-.btn-next{background:var(--yellow);color:var(--black);border:2px solid var(--black);padding:8px 20px;border-radius:var(--rad2);cursor:pointer;font-size:12px;font-family:inherit;font-weight:700;transition:all .15s;}
+.btn-next{background:var(--yellow);color:var(--black);border:2px solid var(--black);padding:8px 22px;border-radius:4px;cursor:pointer;font-size:12px;font-family:inherit;font-weight:800;transition:all .15s;}
 .btn-next:hover{filter:brightness(.93);}
 
 /* ── OVERVIEW ── */
-.ov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:12px;margin:20px 0;}
-.ov-card{background:var(--card);border:1px solid var(--border);border-radius:var(--rad3);padding:16px;cursor:pointer;transition:all .2s;border-top:3px solid var(--border);}
-.ov-card:hover{border-top-color:var(--yellow);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08);}
-.ov-card.done{border-top-color:var(--success);}
-.ov-icon{font-size:22px;margin-bottom:8px;}
-.ov-card h4{font-size:12px;font-weight:700;margin-bottom:3px;color:var(--black);}
+.ov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:20px 0;}
+.ov-card{background:#fff;border:1.5px solid var(--black);border-radius:4px;padding:16px;cursor:pointer;transition:all .15s;}
+.ov-card:hover{background:rgba(252,255,85,.06);transform:translateY(-2px);}
+.ov-card.done{border-color:var(--success);}
+.ov-card-icon{width:36px;height:36px;margin-bottom:10px;opacity:.9;}
+.ov-card h4{font-size:12px;font-weight:700;margin-bottom:4px;color:var(--black);}
 .ov-card p{font-size:11px;color:var(--dim);}
-.ov-score{display:inline-block;margin-top:8px;font-size:10px;background:var(--info-bg);border:1px solid var(--yellow);color:var(--black);padding:2px 8px;border-radius:var(--rad1);font-weight:700;}
+.ov-score{display:inline-flex;align-items:center;margin-top:8px;font-size:10px;background:var(--yellow);border:1.5px solid var(--black);color:var(--black);padding:2px 8px;border-radius:3px;font-weight:800;}
 
 /* ── ADMIN ── */
-.admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:1000;align-items:center;justify-content:center;}
+.admin-overlay{display:none;position:fixed;inset:0;background:rgba(7,7,7,.7);backdrop-filter:blur(4px);z-index:1000;align-items:center;justify-content:center;}
 .admin-overlay.open{display:flex;}
-.admin-modal{background:var(--card);border:1px solid var(--border);border-radius:var(--rad3);width:92%;max-width:780px;max-height:87vh;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.15);overflow:hidden;}
-.admin-mhdr{background:var(--black);border-bottom:1px solid var(--slate);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.admin-mhdr h2{font-size:14px;font-weight:700;color:var(--white);display:flex;align-items:center;gap:8px;}
-.admin-mhdr h2::before{content:'';display:inline-block;width:3px;height:14px;background:var(--yellow);border-radius:1px;}
-.admin-close{background:none;border:1px solid var(--slate);color:var(--cement);font-size:14px;cursor:pointer;padding:4px 10px;border-radius:var(--rad1);line-height:1;transition:all .15s;font-family:inherit;}
+.admin-modal{background:#fff;border:2px solid var(--black);border-radius:4px;width:92%;max-width:780px;max-height:87vh;display:flex;flex-direction:column;overflow:hidden;}
+.admin-mhdr{background:var(--black);border-bottom:2px solid var(--black);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.admin-mhdr h2{font-size:14px;font-weight:700;color:var(--white);display:flex;align-items:center;gap:10px;}
+.admin-close{background:none;border:1.5px solid var(--slate);color:var(--cement);font-size:13px;cursor:pointer;padding:4px 10px;border-radius:3px;line-height:1;transition:all .15s;font-family:inherit;font-weight:700;}
 .admin-close:hover{border-color:var(--error);color:var(--error);}
 .admin-login{padding:48px;text-align:center;}
 .admin-login h3{margin-bottom:6px;color:var(--black);font-size:18px;font-weight:700;}
-.admin-login p.sub{color:var(--dim);font-size:13px;margin-bottom:24px;}
-.admin-input{width:100%;max-width:280px;padding:10px 14px;border:1px solid var(--border);border-radius:var(--rad2);font-size:14px;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto;background:var(--bg);color:var(--black);font-family:inherit;transition:border-color .15s;}
-.admin-input:focus{outline:none;border-color:var(--yellow);}
+.admin-input{width:100%;max-width:280px;padding:10px 14px;border:1.5px solid var(--black);border-radius:4px;font-size:14px;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto;background:#fff;color:var(--black);font-family:inherit;transition:border-color .15s;}
+.admin-input:focus{outline:none;border-color:var(--yellow);box-shadow:0 0 0 2px rgba(252,255,85,.3);}
 .admin-hint{font-size:11px;color:var(--dim);margin-bottom:6px;}
 .admin-hint strong{color:var(--black);font-weight:700;}
 .admin-body{overflow-y:auto;flex:1;}
-.admin-tabs{display:flex;border-bottom:1px solid var(--border);padding:0 18px;background:var(--bg2);gap:2px;flex-shrink:0;}
-.a-tab{padding:10px 14px;border:none;background:none;cursor:pointer;font-size:12px;color:var(--muted);border-bottom:2px solid transparent;font-weight:700;font-family:inherit;letter-spacing:.02em;transition:all .15s;}
+.admin-tabs{display:flex;border-bottom:1.5px solid var(--black);padding:0 18px;background:#f8f8f6;gap:0;flex-shrink:0;}
+.a-tab{padding:10px 14px;border:none;background:none;cursor:pointer;font-size:12px;color:var(--muted);border-bottom:2.5px solid transparent;font-weight:700;font-family:inherit;letter-spacing:.02em;transition:all .12s;}
 .a-tab.active{color:var(--black);border-bottom-color:var(--yellow);}
 .a-tab:hover:not(.active){color:var(--black);}
 .a-pane{display:none;padding:20px;}
 .a-pane.active{display:block;}
-.ak-mod{margin-bottom:16px;border:1px solid var(--border);border-radius:var(--rad2);overflow:hidden;}
-.ak-mod-hdr{background:var(--card2);padding:10px 14px;font-size:13px;font-weight:700;border-bottom:1px solid var(--border);color:var(--black);}
-.ak-row{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;padding:8px 14px;border-bottom:1px solid var(--border);font-size:12px;}
+.ak-mod{margin-bottom:16px;border:1.5px solid var(--black);border-radius:4px;overflow:hidden;}
+.ak-mod-hdr{background:#f8f8f6;padding:10px 14px;font-size:13px;font-weight:700;border-bottom:1.5px solid var(--black);color:var(--black);}
+.ak-row{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;padding:8px 14px;border-bottom:1px solid var(--off-white);font-size:12px;}
 .ak-row:last-child{border-bottom:none;}
 .ak-num{font-weight:800;color:var(--black);}
 .ak-ans{color:var(--success);font-weight:700;}
-.ak-exp{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5;}
-.gloss-item{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.ak-ans::before{content:"✓ ";font-weight:800;}
+.ak-exp{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.55;}
+.gloss-item{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--off-white);}
 .gloss-item:last-child{border-bottom:none;}
 .gloss-term{font-size:13px;font-weight:700;color:var(--black);margin-bottom:4px;}
 .gloss-def{font-size:12px;color:var(--muted);line-height:1.6;}
 
-/* ── CERTIFICATE — dark card with yellow accent ── */
-.cert{background:var(--black);border:2px solid var(--yellow);padding:40px;border-radius:var(--rad3);text-align:center;margin:16px 0;position:relative;overflow:hidden;}
-.cert::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(252,255,85,.12),transparent 70%);pointer-events:none;}
+/* ── CERTIFICATE — dark panel, yellow accent ── */
+.cert{background:var(--black);border:2px solid var(--yellow);padding:40px;border-radius:4px;text-align:center;margin:16px 0;position:relative;overflow:hidden;}
+.cert::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(252,255,85,.1),transparent 70%);pointer-events:none;}
 .cert h2{font-size:22px;margin-bottom:8px;font-weight:800;color:var(--yellow);letter-spacing:-.02em;}
 .cert p{color:var(--cement);font-size:13px;margin-bottom:4px;}
-.cert .cert-score{font-size:44px;font-weight:800;color:var(--yellow);margin:16px 0 4px;letter-spacing:-.03em;}
+.cert-illus{width:80px;height:80px;filter:brightness(0) invert(1);opacity:.85;margin:0 auto 16px;}
 
 /* ── MISC ── */
-.divider{height:1px;background:var(--border);margin:16px 0;}
-.tag{display:inline-block;padding:2px 8px;border-radius:var(--rad1);font-size:10px;font-weight:700;margin:2px;border:1px solid;}
-.tag-b{background:var(--info-bg);border-color:var(--yellow);color:var(--black);}
-.tag-g{background:var(--success-bg);border-color:var(--success-border);color:var(--success);}
-.tag-o{background:var(--warn-bg);border-color:var(--warn-border);color:var(--warn);}
-.tag-r{background:var(--error-bg);border-color:var(--error-border);color:var(--error);}
-.fade-in{animation:fi .25s ease;}
-@keyframes fi{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.divider{height:1.5px;background:var(--off-white);margin:16px 0;}
+.tag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:800;margin:2px;border:1.5px solid;}
+.tag-b{background:rgba(252,255,85,.1);border-color:var(--yellow);color:var(--black);}
+.tag-g{background:var(--success-bg);border-color:var(--success-border);color:#166534;}
+.tag-o{background:var(--warn-bg);border-color:var(--warn-border);color:#92400e;}
+.tag-r{background:var(--error-bg);border-color:var(--error-border);color:#991b1b;}
+.fade-in{animation:fi .22s ease;}
+@keyframes fi{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
 
-/* ── OVERVIEW HERO — dark card (Figma Footer Dark pattern) ── */
-.ov-hero{background:var(--black);border:1px solid var(--slate);border-radius:var(--rad3);padding:32px;margin-bottom:24px;position:relative;overflow:hidden;display:flex;align-items:center;gap:24px;}
+/* ── OVERVIEW HERO — dark panel ── */
+.ov-hero{background:var(--black);border:2px solid var(--black);border-radius:4px;padding:32px;margin-bottom:24px;position:relative;overflow:hidden;display:flex;align-items:center;gap:28px;}
 .ov-hero-content{flex:1;}
-.ov-hero::after{content:'SP';position:absolute;right:-10px;top:-20px;font-size:120px;font-weight:800;color:rgba(252,255,85,.05);pointer-events:none;line-height:1;}
 .ov-hero h2{font-size:26px;font-weight:800;color:var(--white);margin-bottom:8px;letter-spacing:-.02em;}
 .ov-hero h2 span{color:var(--yellow);}
-.ov-hero p{font-size:13px;color:var(--cement);line-height:1.7;max-width:600px;}
-.ov-hero-img{flex-shrink:0;width:130px;height:130px;filter:brightness(0) invert(1);opacity:.6;}
+.ov-hero p{font-size:13px;color:var(--cement);line-height:1.75;max-width:580px;}
+.ov-hero-img{flex-shrink:0;width:130px;height:130px;filter:brightness(0) invert(1);opacity:.55;}
 
-/* ── CAPSTONE ALERT ── */
-.cap-intro{background:var(--info-bg);border:1px solid var(--yellow);border-radius:var(--rad2);padding:16px 18px;margin-bottom:20px;font-size:13px;color:var(--slate);line-height:1.6;}
+/* ── CAPSTONE INTRO ── */
+.cap-intro{background:rgba(252,255,85,.08);border:1.5px solid var(--yellow);border-radius:4px;padding:16px 18px;margin-bottom:20px;font-size:13px;color:var(--slate);line-height:1.65;}
 
 @media(max-width:700px){
   .sidebar{display:none;}
   .vid-grid{grid-template-columns:1fr;}
   .main{padding:16px;}
   .mod-h2{font-size:22px;}
-  .mod-hero{flex-direction:column-reverse;}
-  .mod-hero-illus{width:100px;height:100px;align-self:flex-end;}
-  .ov-hero{flex-direction:column;}
+  .mod-hero{flex-direction:column-reverse;gap:16px;}
+  .mod-hero-illus{width:90px;height:90px;align-self:flex-end;}
+  .ov-hero{flex-direction:column;gap:16px;}
   .ov-hero-img{width:80px;height:80px;}
+  .ov-grid{grid-template-columns:1fr 1fr;}
 }
 </style>
 </head>
@@ -322,7 +329,7 @@ body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--
     </div>
     <div class="hdr-right">
       <div class="hdr-progress" id="hdrProgress">0 / 8 modules complete</div>
-      <button class="btn-sm" onclick="openAdmin()">🔐 Admin Panel</button>
+      <button class="btn-sm" onclick="openAdmin()"><img src="assets/icons/45.svg" class="ico ico-sm ico-inv"> Admin Panel</button>
     </div>
   </div>
   <div class="prog-bar-wrap"><div class="prog-bar" id="progBar" style="width:0%"></div></div>
@@ -337,7 +344,7 @@ body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--
 <div class="admin-overlay" id="adminOverlay">
   <div class="admin-modal">
     <div class="admin-mhdr">
-      <h2>🔐 Admin Panel — Answer Keys & Explanations</h2>
+      <h2><img src="assets/icons/45.svg" class="ico ico-sm ico-inv"> Admin Panel — Answer Keys &amp; Explanations</h2>
       <button class="admin-close" onclick="closeAdmin()">✕</button>
     </div>
     <div id="adminLoginArea" class="admin-login">
@@ -379,6 +386,33 @@ const MODULE_ILLUS = {
   7:'assets/illustrations/107.Connecting.svg',
   8:'assets/illustrations/106.Tools.svg',
   9:'assets/illustrations/136.Achievement.svg'
+};
+
+const SECTION_ICONS = {
+  home:       'assets/icons/1.svg',
+  objectives: 'assets/icons/2.svg',
+  concepts:   'assets/icons/3.svg',
+  keypoints:  'assets/icons/8.svg',
+  warnings:   'assets/icons/9.svg',
+  video:      'assets/icons/38.svg',
+  quiz:       'assets/icons/39.svg',
+  overview:   'assets/icons/44.svg',
+  admin:      'assets/icons/45.svg',
+  cert:       'assets/icons/46.svg',
+  capstone:   'assets/icons/29.svg'
+};
+
+const MODULE_ICONS = {
+  0:'assets/icons/44.svg',
+  1:'assets/icons/10.svg',
+  2:'assets/icons/11.svg',
+  3:'assets/icons/12.svg',
+  4:'assets/icons/13.svg',
+  5:'assets/icons/14.svg',
+  6:'assets/icons/15.svg',
+  7:'assets/icons/16.svg',
+  8:'assets/icons/17.svg',
+  9:'assets/icons/29.svg'
 };
 
 /* ============================================================
@@ -1058,9 +1092,9 @@ function buildSidebar(){
     const done = progress[m.id]?.done;
     const active = m.id===currentMod;
     html+=`<div class="sb-item${active?' active':''}${done?' done':''}" onclick="navTo(${m.id})">
-      <span class="sb-num">${m.isOverview?'🏠':m.isCapstone?'🏆':m.id}</span>
+      <div class="sb-icon"><img src="${MODULE_ICONS[m.id]}" class="ico ico-sm"></div>
       <span class="sb-text">${m.shortTitle||m.title}</span>
-      <span class="sb-status">${done?'✅':active?'▶':'○'}</span>
+      <span class="sb-status">${done?'✓':active?'›':''}</span>
     </div>`;
   });
   sb.innerHTML=html;
@@ -1100,7 +1134,7 @@ function renderMain(){
 function renderOverview(el){
   let html=`<div class="ov-hero">
     <div class="ov-hero-content">
-      <div class="mod-badge">📋 SharePoint Admin Professional Course</div>
+      <div class="mod-badge"><img src="${SECTION_ICONS.overview}" class="ico ico-sm"> SharePoint Admin Professional Course</div>
       <h2>GAMA-1 IMS <span>SharePoint</span> Administrator Course</h2>
       <p>Prepare for the SharePoint Administrator role at GAMA-1 — covering governance, compliance (CMMC Level 2, NIST SP 800-171, ISO 9001/20000-1/27001), Power Platform integration, and Microsoft 365 ecosystem management in a GCC environment. Complete all 8 modules and the capstone assessment.</p>
     </div>
@@ -1111,24 +1145,24 @@ function renderOverview(el){
     const done=progress[m.id]?.done;
     const score=progress[m.id]?.score;
     html+=`<div class="ov-card${done?' done':''}" onclick="navTo(${m.id})">
-      <div class="ov-icon">${m.icon}</div>
+      <img src="${MODULE_ICONS[m.id]}" class="ov-card-icon ico">
       <h4>${m.shortTitle||m.title}</h4>
       <p>${m.isCapstone?'Final Scenario Assessment':'5 Questions · Video Lessons'}</p>
       ${score!==undefined?`<span class="ov-score">Score: ${score}%</span>`:''}
     </div>`;
   });
   html+=`</div>
-  <div class="card"><div class="card-hdr"><span class="card-icon">📊</span><h3>Required Qualifications Coverage</h3></div>
+  <div class="card"><div class="card-hdr"><img src="${SECTION_ICONS.overview}" class="ico"><h3>Required Qualifications Coverage</h3></div>
   <div class="card-body">
   <table class="tbl"><thead><tr><th>Qualification</th><th>Course Module</th><th>Status</th></tr></thead><tbody>
-  <tr><td>SharePoint architecture, sites, libraries, metadata</td><td>Module 1</td><td>${progress[1]?.done?'✅ Complete':'📌 Pending'}</td></tr>
-  <tr><td>Permissions, RBAC, least privilege</td><td>Module 2</td><td>${progress[2]?.done?'✅ Complete':'📌 Pending'}</td></tr>
-  <tr><td>Microsoft 365 GCC, CMMC Level 2, NIST SP 800-171</td><td>Module 3</td><td>${progress[3]?.done?'✅ Complete':'📌 Pending'}</td></tr>
-  <tr><td>Governance, taxonomy, lifecycle management</td><td>Module 4</td><td>${progress[4]?.done?'✅ Complete':'📌 Pending'}</td></tr>
-  <tr><td>Document control, records, retention</td><td>Module 5</td><td>${progress[5]?.done?'✅ Complete':'📌 Pending'}</td></tr>
-  <tr><td>Power Platform (Power Automate, Power Apps, Power BI)</td><td>Module 6</td><td>${progress[6]?.done?'✅ Complete':'📌 Pending'}</td></tr>
-  <tr><td>Teams, OneDrive, hub site integration</td><td>Module 7</td><td>${progress[7]?.done?'✅ Complete':'📌 Pending'}</td></tr>
-  <tr><td>ISO 9001/20000-1/27001 compliance & audit readiness</td><td>Module 8</td><td>${progress[8]?.done?'✅ Complete':'📌 Pending'}</td></tr>
+  <tr><td>SharePoint architecture, sites, libraries, metadata</td><td>Module 1</td><td>${progress[1]?.done?'Complete':'Pending'}</td></tr>
+  <tr><td>Permissions, RBAC, least privilege</td><td>Module 2</td><td>${progress[2]?.done?'Complete':'Pending'}</td></tr>
+  <tr><td>Microsoft 365 GCC, CMMC Level 2, NIST SP 800-171</td><td>Module 3</td><td>${progress[3]?.done?'Complete':'Pending'}</td></tr>
+  <tr><td>Governance, taxonomy, lifecycle management</td><td>Module 4</td><td>${progress[4]?.done?'Complete':'Pending'}</td></tr>
+  <tr><td>Document control, records, retention</td><td>Module 5</td><td>${progress[5]?.done?'Complete':'Pending'}</td></tr>
+  <tr><td>Power Platform (Power Automate, Power Apps, Power BI)</td><td>Module 6</td><td>${progress[6]?.done?'Complete':'Pending'}</td></tr>
+  <tr><td>Teams, OneDrive, hub site integration</td><td>Module 7</td><td>${progress[7]?.done?'Complete':'Pending'}</td></tr>
+  <tr><td>ISO 9001/20000-1/27001 compliance & audit readiness</td><td>Module 8</td><td>${progress[8]?.done?'Complete':'Pending'}</td></tr>
   </tbody></table></div></div>`;
   el.innerHTML=html;
 }
@@ -1137,7 +1171,7 @@ function renderModule(el,m){
   const illus=MODULE_ILLUS[m.id];
   let html=`<div class="mod-hero">
     <div class="mod-hero-content">
-      <div class="mod-badge">${m.icon} Module ${m.id} of 8</div>
+      <div class="mod-badge"><img src="${MODULE_ICONS[m.id]}" class="ico ico-sm"> Module ${m.id} of 8</div>
       <h2 class="mod-h2">${m.title}</h2>
       <p class="mod-desc">${m.desc}</p>
     </div>
@@ -1145,25 +1179,25 @@ function renderModule(el,m){
   </div>`;
 
   // Objectives
-  html+=`<div class="card"><div class="card-hdr"><span class="card-icon">🎯</span><h3>Learning Objectives</h3></div><div class="card-body">
+  html+=`<div class="card"><div class="card-hdr"><img src="${SECTION_ICONS.objectives}" class="ico"><h3>Learning Objectives</h3></div><div class="card-body">
   <ul class="kp-list">${m.objectives.map(o=>`<li>${o}</li>`).join('')}</ul></div></div>`;
 
   // Concepts
-  html+=`<div class="card"><div class="card-hdr"><span class="card-icon">💡</span><h3>Key Concepts</h3></div><div class="card-body">
+  html+=`<div class="card"><div class="card-hdr"><img src="${SECTION_ICONS.concepts}" class="ico"><h3>Key Concepts</h3></div><div class="card-body">
   <div class="concept-grid">${m.concepts.map(c=>`<div class="concept-item"><h4>${c.h}</h4><p>${c.p}</p></div>`).join('')}</div></div></div>`;
 
   // Key Points
-  html+=`<div class="card"><div class="card-hdr"><span class="card-icon">📌</span><h3>Must-Know Points</h3></div><div class="card-body">
+  html+=`<div class="card"><div class="card-hdr"><img src="${SECTION_ICONS.keypoints}" class="ico"><h3>Must-Know Points</h3></div><div class="card-body">
   <ul class="kp-list">${m.keyPoints.map(p=>`<li>${p}</li>`).join('')}</ul></div></div>`;
 
   // Alerts
   if(m.alerts?.length){
-    html+=`<div class="card"><div class="card-hdr"><span class="card-icon">⚠️</span><h3>Important Notes & Warnings</h3></div><div class="card-body">
-    ${m.alerts.map(a=>`<div class="alert alert-${a.type}">${a.text}</div>`).join('')}</div></div>`;
+    html+=`<div class="card"><div class="card-hdr"><img src="${SECTION_ICONS.warnings}" class="ico"><h3>Important Notes &amp; Warnings</h3></div><div class="card-body">
+    ${m.alerts.map(a=>`<div class="alert alert-${a.type}">${a.text.replace(/^[^\w'"]+/,'')}</div>`).join('')}</div></div>`;
   }
 
   // Videos
-  html+=`<div class="card"><div class="card-hdr"><span class="card-icon">🎬</span><h3>Video Lessons</h3></div><div class="card-body">`;
+  html+=`<div class="card"><div class="card-hdr"><img src="${SECTION_ICONS.video}" class="ico"><h3>Video Lessons</h3></div><div class="card-body">`;
   if(m.videos.length===1){
     html+=`<div class="vid-wrap"><iframe src="https://www.youtube.com/embed/${m.videos[0].id}?rel=0&modestbranding=1" allowfullscreen loading="lazy"></iframe></div>
     <p class="vid-caption">${m.videos[0].title} — ${m.videos[0].ch}</p>`;
@@ -1187,13 +1221,13 @@ function renderCapstone(el,m){
   const illus=MODULE_ILLUS[9];
   let html=`<div class="mod-hero">
     <div class="mod-hero-content">
-      <div class="mod-badge">🏆 Capstone Assessment</div>
+      <div class="mod-badge"><img src="${SECTION_ICONS.capstone}" class="ico ico-sm"> Capstone Assessment</div>
       <h2 class="mod-h2">${m.title}</h2>
       <p class="mod-desc">${m.desc}</p>
     </div>
     ${illus?`<div class="mod-hero-illus"><img src="${illus}" alt=""></div>`:''}
   </div>
-  <div class="alert alert-info">ℹ️ This 10-question scenario assessment integrates concepts from all 8 modules. Each question presents a real-world GAMA-1 SharePoint admin decision. Complete all modules before attempting the capstone.</div>`;
+  <div class="alert alert-info">This 10-question scenario assessment integrates concepts from all 8 modules. Each question presents a real-world GAMA-1 SharePoint admin decision. Complete all modules before attempting the capstone.</div>`;
   html+=buildQuiz(m, true);
   el.innerHTML=html;
 }
@@ -1205,14 +1239,14 @@ function buildQuiz(m, isCapstone){
   const qCount=m.questions.length;
   let html=`<div class="card" id="quiz-${m.id}">
   <div class="quiz-hdr">
-    <h3>${isCapstone?'🏆 Capstone Assessment':'📝 Knowledge Assessment'}</h3>
+    <h3>${isCapstone?'<img src="'+SECTION_ICONS.capstone+'" class="ico"> Capstone Assessment':'<img src="'+SECTION_ICONS.quiz+'" class="ico"> Knowledge Assessment'}</h3>
     <span>${qCount} Questions · Scenario-Based</span>
   </div>`;
 
   m.questions.forEach((q,qi)=>{
     html+=`<div class="q-block" id="qblock-${m.id}-${qi}">
     <span class="q-type">${q.type}</span>`;
-    if(q.scenario) html+=`<div class="q-scenario">📋 Scenario: ${q.scenario}</div>`;
+    if(q.scenario) html+=`<div class="q-scenario"><span class="q-scenario-label">Scenario</span>${q.scenario}</div>`;
     html+=`<p class="q-text">Q${qi+1}. ${q.q}</p>
     <ul class="opts">`;
     q.opts.forEach((opt,oi)=>{
@@ -1223,8 +1257,8 @@ function buildQuiz(m, isCapstone){
       </li>`;
     });
     html+=`</ul>
-    <div class="feedback fb-ok" id="fb-ok-${m.id}-${qi}">✅ Correct! ${q.exp}</div>
-    <div class="feedback fb-no" id="fb-no-${m.id}-${qi}">❌ Incorrect. ${q.exp}</div>
+    <div class="feedback fb-ok" id="fb-ok-${m.id}-${qi}">Correct — ${q.exp}</div>
+    <div class="feedback fb-no" id="fb-no-${m.id}-${qi}">Incorrect — ${q.exp}</div>
     </div>`;
   });
 
@@ -1267,8 +1301,8 @@ function submitQuiz(mid){
       if(!el) return;
       el.style.cursor='default';
       el.onclick=null;
-      if(oi===q.ans){ el.classList.add('correct'); if(ind)ind.textContent='✅';}
-      else if(oi===sel){ el.classList.add('wrong'); if(ind)ind.textContent='❌';}
+      if(oi===q.ans){ el.classList.add('correct'); if(ind)ind.textContent='✓';}
+      else if(oi===sel){ el.classList.add('wrong'); if(ind)ind.textContent='✗';}
     });
 
     const fbOk=document.getElementById(`fb-ok-${mid}-${qi}`);
@@ -1290,10 +1324,10 @@ function submitQuiz(mid){
 
   let resultHtml=`<div class="quiz-result">
     <div class="qs-score">${pct}%</div>
-    <div class="qs-label">${correct} of ${total} correct — ${pass?'✅ PASSED':'📚 Review Recommended'}</div>
+    <div class="qs-label">${correct} of ${total} correct — ${pass?'PASSED':'Review Recommended'}</div>
     <div class="score-bar"><div class="score-fill ${fillClass}" style="width:${pct}%"></div></div>
     <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">${pass?'Excellent work! You can proceed to the next module.':'Review the explanations above and retry to reach 80%+ to pass.'}</p>
-    <button class="btn-retry" onclick="retryQuiz(${mid})">🔄 Retry</button>`;
+    <button class="btn-retry" onclick="retryQuiz(${mid})">Retry</button>`;
 
   const nextMod=MODULES.find(x=>x.id===mid+1);
   if(nextMod) resultHtml+=`<button class="btn-next" onclick="navTo(${mid+1})">Next: ${nextMod.shortTitle||nextMod.title} →</button>`;
@@ -1317,7 +1351,7 @@ function buildCert(){
   const scores=MODULES.filter(m=>!m.isOverview&&progress[m.id]?.score!==undefined).map(m=>progress[m.id].score);
   const avg=scores.length?Math.round(scores.reduce((a,b)=>a+b,0)/scores.length):0;
   return `<div class="cert">
-    <div style="font-size:40px;margin-bottom:12px;">🏅</div>
+    <img src="${MODULE_ILLUS[9]}" class="cert-illus">
     <h2>Certificate of Completion</h2>
     <p>SharePoint Administrator Professional Course</p>
     <p>GAMA-1 IMS | CMMC Level 2 | ISO 9001/20000-1/27001</p>
@@ -1366,14 +1400,14 @@ function buildAdminPanels(){
   // Panel 0: Answer Keys
   let ak='';
   MODULES.filter(m=>!m.isOverview&&m.questions).forEach(m=>{
-    ak+=`<div class="ak-mod"><div class="ak-mod-hdr">${m.icon} ${m.title}</div>`;
+    ak+=`<div class="ak-mod"><div class="ak-mod-hdr"><img src="${MODULE_ICONS[m.id]}" class="ico ico-sm"> ${m.title}</div>`;
     m.questions.forEach((q,qi)=>{
       const correctOpt=q.opts[q.ans];
       ak+=`<div class="ak-row">
         <span class="ak-num">Q${qi+1}</span>
         <div>
           <div style="font-size:12px;margin-bottom:4px;">${q.q}</div>
-          <div class="ak-ans">✅ ${String.fromCharCode(65+q.ans)}. ${correctOpt}</div>
+          <div class="ak-ans">${String.fromCharCode(65+q.ans)}. ${correctOpt}</div>
           <div class="ak-exp">${q.exp}</div>
         </div>
       </div>`;
@@ -1424,14 +1458,14 @@ function buildAdminPanels(){
   ];
   let mm='';
   mistakes.forEach((mis,i)=>{
-    mm+=`<div class="gloss-item"><div class="gloss-term" style="color:var(--danger);">⚠️ ${i+1}. ${mis.h}</div><div class="gloss-def">${mis.exp}</div></div>`;
+    mm+=`<div class="gloss-item"><div class="gloss-term" style="color:var(--danger);">${i+1}. ${mis.h}</div><div class="gloss-def">${mis.exp}</div></div>`;
   });
   document.getElementById('apane2').innerHTML=mm;
 
   // Panel 3: Learning Objectives
   let lo='';
   MODULES.filter(m=>!m.isOverview&&m.objectives).forEach(m=>{
-    lo+=`<div class="ak-mod"><div class="ak-mod-hdr">${m.icon} ${m.title}</div>
+    lo+=`<div class="ak-mod"><div class="ak-mod-hdr"><img src="${MODULE_ICONS[m.id]}" class="ico ico-sm"> ${m.title}</div>
     <div style="padding:12px 14px;"><ul class="kp-list">${m.objectives.map(o=>`<li>${o}</li>`).join('')}</ul></div></div>`;
   });
   document.getElementById('apane3').innerHTML=lo;
