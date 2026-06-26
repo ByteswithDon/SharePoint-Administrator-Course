@@ -44,6 +44,7 @@ To support different learning preferences and reduce cognitive load, this module
 This was an intentional design choice for visual learners, busy team members, and users who may need quick, accessible explanations as they build their understanding of SharePoint administration and migration planning.
 
 By allowing learners to watch videos within the module, the experience keeps resources centralized and reduces the need to switch between multiple tabs, platforms, or documents. This helps learners stay focused while reinforcing key concepts through both written and visual instruction.
+
 ---
 
 ## Problem Statement
