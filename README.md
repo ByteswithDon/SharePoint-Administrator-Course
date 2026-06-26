@@ -37,14 +37,6 @@ This course is grounded in **Bloom’s Taxonomy**, moving learners from foundati
 
 The learning experience is designed to help learners move beyond “knowing what SharePoint is” into understanding how to support real administrative and migration tasks.
 
-## Multimedia Learning Support
-
-To support different learning preferences and reduce cognitive load, this module uses the YouTube API to pull relevant videos directly into the learning environment.
-
-This was an intentional design choice for visual learners, busy team members, and users who may need quick, accessible explanations as they build their understanding of SharePoint administration and migration planning.
-
-By allowing learners to watch videos within the module, the experience keeps resources centralized and reduces the need to switch between multiple tabs, platforms, or documents. This helps learners stay focused while reinforcing key concepts through both written and visual instruction.
-
 ---
 
 ## Problem Statement
@@ -86,6 +78,10 @@ This makes the course useful for:
 - Migration-readiness framing
 - Designed for team enablement and internal upskilling
 - Web-based deployment for easy access
+- Integrated YouTube API to embed relevant instructional videos directly within the module
+- Supports visual learners through multimedia explanations
+- Reduces cognitive load by keeping learning resources in one environment
+- Allows learners to review SharePoint concepts without leaving the course experience
 
 ---
 
