@@ -1,6 +1,6 @@
 The **SharePoint Administrator Course** is an interactive learning module designed to help teams build confidence with SharePoint administration, migration planning, and platform analysis.
 
-This project was inspired by a real workplace challenge: our team was tasked with supporting a SharePoint migration and analysis process, but several team members needed deeper working knowledge of SharePoint before they could confidently contribute to the migration work.
+This project was inspired by a real workplace challenge: our team was tasked with supporting a SharePoint migration and analysis process, but several team members needed a deeper working knowledge of SharePoint before they could confidently contribute to the migration work.
 
 Rather than treating the knowledge gap as a blocker, I designed this course as a bridge between **understanding, practice, and implementation**.
 
