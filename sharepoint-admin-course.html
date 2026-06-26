@@ -1138,7 +1138,14 @@ function renderOverview(el){
       <h2>BETA <span>SharePoint</span> Administrator Course</h2>
       <p>This course covers governance, compliance (CMMC Level 2, NIST SP 800-171, ISO 9001/20000-1/27001), Power Platform integration, and Microsoft 365 ecosystem management in a GCC environment. Complete all 8 modules and the capstone assessment.</p>
     </div>
-    <img src="${MODULE_ILLUS[0]}" class="ov-hero-img" alt="">
+function renderOverview(el){
+  let html=`<div class="ov-hero">
+    <div class="ov-hero-content">
+      <div class="mod-badge">...</div>
+      <h2>BETA <span>SharePoint</span> Administrator Course</h2>
+      <p>...</p>
+    </div>
+  </div>  ← no img tag here
   </div>
   <div class="ov-grid">`;
   MODULES.filter(m=>!m.isOverview).forEach(m=>{
