@@ -37,6 +37,13 @@ This course is grounded in **Bloom’s Taxonomy**, moving learners from foundati
 
 The learning experience is designed to help learners move beyond “knowing what SharePoint is” into understanding how to support real administrative and migration tasks.
 
+## Multimedia Learning Support
+
+To support different learning preferences and reduce cognitive load, this module uses the YouTube API to pull relevant videos directly into the learning environment.
+
+This was an intentional design choice for visual learners, busy team members, and users who may need quick, accessible explanations as they build their understanding of SharePoint administration and migration planning.
+
+By allowing learners to watch videos within the module, the experience keeps resources centralized and reduces the need to switch between multiple tabs, platforms, or documents. This helps learners stay focused while reinforcing key concepts through both written and visual instruction.
 ---
 
 ## Problem Statement
@@ -55,7 +62,7 @@ This created a need for a learning resource that was:
 
 ## Solution
 
-The SharePoint Administrator Course provides a structured, interactive learning experience that introduces key concepts and gives learners a guided path toward practical implementation.
+The SharePoint Administrator Course provides a structured, interactive learning experience that introduces key concepts and offers a guided path to practical implementation.
 
 Instead of overwhelming learners with technical documentation, the course breaks SharePoint administration into approachable concepts and connects each concept to workplace scenarios.
 
@@ -155,7 +162,7 @@ Future versions of this project may include:
 
 This project represents the intersection of learning design, technology enablement, and systems thinking.
 
-It was created from a real organizational need and transformed into a scalable learning solution that can help teams prepare for SharePoint administration and migration work.
+It was created to address a real organizational need and transformed into a scalable learning solution that helps teams prepare for SharePoint administration and migration work.
 
 For me, this project demonstrates how instructional design can support technical operations by making complex systems easier to understand, practice, and implement.
 
@@ -163,7 +170,4 @@ For me, this project demonstrates how instructional design can support technical
 
 ## Author
 
-**Lyndonia McKenzie**  
-Learning Experience Designer | LMS Technical Operations Specialist | Digital Literacy & Technology Enablement Consultant
-
-Learn with Lyndonia focuses on helping individuals and organizations build confidence with technology through practical, engaging, and human-centered learning experiences.
+**Lyndonia **  
