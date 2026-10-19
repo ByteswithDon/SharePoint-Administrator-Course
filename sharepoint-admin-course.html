@@ -329,7 +329,7 @@ body{font-family:'Outfit',system-ui,sans-serif;background:#f8f8f6;color:var(--te
     </div>
     <div class="hdr-right">
       <div class="hdr-progress" id="hdrProgress">0 / 8 modules complete</div>
-      <button class="btn-sm" onclick="openAdmin()"><img src="assets/icons/45.svg" class="ico ico-sm ico-inv"> Admin Panel</button>
+      <button class="btn-sm" onclick="openAdmin()"><img src="assets/icons/45.svg" class="ico ico-sm ico-inv"> Instructor View</button>
     </div>
   </div>
   <div class="prog-bar-wrap"><div class="prog-bar" id="progBar" style="width:0%"></div></div>
@@ -344,16 +344,10 @@ body{font-family:'Outfit',system-ui,sans-serif;background:#f8f8f6;color:var(--te
 <div class="admin-overlay" id="adminOverlay">
   <div class="admin-modal">
     <div class="admin-mhdr">
-      <h2><img src="assets/icons/45.svg" class="ico ico-sm ico-inv"> Admin Panel — Answer Keys &amp; Explanations</h2>
+      <h2><img src="assets/icons/45.svg" class="ico ico-sm ico-inv"> Instructor View: Answer Keys &amp; Explanations</h2>
       <button class="admin-close" onclick="closeAdmin()">✕</button>
     </div>
-    <div id="adminLoginArea" class="admin-login">
-      <h3>Admin Access Required</h3>
-      <p class="admin-hint">Default password: <strong>SP@Admin2024</strong></p>
-      <input class="admin-input" type="password" id="adminPwInput" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')checkAdminPw()">
-      <br><button class="btn-submit" onclick="checkAdminPw()">Unlock</button>
-      <p id="adminPwErr" style="color:var(--danger);font-size:12px;margin-top:8px;"></p>
-    </div>
+    <p class="admin-hint" style="padding:10px 18px;margin:0;border-bottom:1.5px solid var(--black);background:#f8f8f6;">Portfolio demo: the instructor view is open to everyone. In a live deployment it sits behind the organization's sign-in.</p>
     <div id="adminContent" style="display:none;flex:1;overflow:hidden;display:none;flex-direction:column;">
       <div class="admin-tabs">
         <button class="a-tab active" onclick="switchAdminTab(0,this)">Answer Keys</button>
@@ -418,7 +412,6 @@ const MODULE_ICONS = {
 /* ============================================================
    COURSE DATA
    ============================================================ */
-const ADMIN_PW = "SP@Admin2024";
 
 const MODULES = [
 {
@@ -1353,27 +1346,16 @@ function buildCert(){
 function openAdmin(){
   document.getElementById('adminOverlay').classList.add('open');
   if(!adminUnlocked){
-    document.getElementById('adminLoginArea').style.display='block';
-    document.getElementById('adminContent').style.display='none';
+    adminUnlocked=true;
+    const ac=document.getElementById('adminContent');
+    ac.style.display='flex';
+    ac.style.flexDirection='column';
+    buildAdminPanels();
   }
 }
 
 function closeAdmin(){
   document.getElementById('adminOverlay').classList.remove('open');
-}
-
-function checkAdminPw(){
-  const pw=document.getElementById('adminPwInput').value;
-  if(pw===ADMIN_PW){
-    adminUnlocked=true;
-    document.getElementById('adminLoginArea').style.display='none';
-    const ac=document.getElementById('adminContent');
-    ac.style.display='flex';
-    ac.style.flexDirection='column';
-    buildAdminPanels();
-  } else {
-    document.getElementById('adminPwErr').textContent='Incorrect password. Try: SP@Admin2024';
-  }
 }
 
 function switchAdminTab(idx,btn){
