@@ -1,167 +1,83 @@
-The **SharePoint Administrator Course** is an interactive learning module designed to help teams build confidence with SharePoint administration, migration planning, and platform analysis.
+# SharePoint Administrator Course
 
-This project was inspired by a real workplace challenge: our team was tasked with supporting a SharePoint migration and analysis process, but several team members needed a deeper working knowledge of SharePoint before they could confidently contribute to the migration work.
+**An eight-module course that prepares a team to support a SharePoint migration, aligned to CMMC Level 2, NIST SP 800-171, and ISO 9001, 20000-1, and 27001.**
 
-Rather than treating the knowledge gap as a blocker, I designed this course as a bridge between **understanding, practice, and implementation**.
-
-The goal of this module is to help learners move from basic SharePoint awareness to applied decision-making so they can better support migration planning, content organization, permissions review, and administrative workflows.
-
-## Project Purpose
-
-SharePoint migrations require more than technical execution. They require team members to understand how content, permissions, site structures, governance, and user needs work together.
-
-This course was created to support learners who may be responsible for SharePoint-related work but do not yet feel fully confident navigating the platform or making informed administrative decisions.
-
-The module helps learners:
-
-- Build foundational SharePoint knowledge
-- Understand core administrator responsibilities
-- Practice thinking through migration-related decisions
-- Connect SharePoint features to real workplace use cases
-- Gain confidence before supporting implementation work
+[Take the course](https://share-admnistrator-course.vercel.app/)
 
 ---
 
-## Learning Design Approach
+## The problem
 
-This course is grounded in **Bloom’s Taxonomy**, moving learners from foundational knowledge to higher-order application.
+My team was supporting a SharePoint migration, and several teammates needed a deeper working knowledge of SharePoint before they could contribute with confidence.
 
-| Bloom’s Level | Course Application |
+A migration isn't only technical. Everyone on the team needs to understand how content, permissions, site structure, governance, and user needs fit together. The documentation that exists is written for administrators who already know the platform. I needed something that took people from understanding SharePoint, to practicing with it, to doing the migration work.
+
+## What the course covers
+
+| # | Module |
 |---|---|
-| Remember | Identify key SharePoint terms, tools, and administrator responsibilities |
-| Understand | Explain how SharePoint sites, libraries, permissions, and metadata support collaboration |
-| Apply | Use SharePoint concepts to evaluate migration and administration scenarios |
-| Analyze | Compare site structures, permission models, and content organization needs |
-| Evaluate | Make recommendations for migration readiness and governance improvements |
-| Create | Develop a practical SharePoint administration or migration support plan |
+| 0 | Course overview |
+| 1 | SharePoint architecture and administration |
+| 2 | Permissions, role-based access, and least privilege |
+| 3 | Microsoft 365 GCC and CMMC Level 2 compliance |
+| 4 | Governance, taxonomy, and information architecture |
+| 5 | Document control, records, and retention |
+| 6 | Power Platform integration |
+| 7 | Microsoft 365 integration: Teams, OneDrive, and hub sites |
+| 8 | Management system compliance and audit readiness (ISO 9001, 20000-1, 27001) |
+| — | Capstone assessment |
 
-The learning experience is designed to help learners move beyond “knowing what SharePoint is” into understanding how to support real administrative and migration tasks.
+## How a learner moves through it
 
----
+```mermaid
+flowchart LR
+  A[Module<br/>objectives and key concepts] --> B[Must-know points<br/>and short videos]
+  B --> C[Scenario questions<br/>with explanations]
+  C -->|80% or more| D[Next module]
+  C -->|below 80%| A
+  D --> E[Capstone<br/>10 scenarios]
+  E --> F[Certificate]
+```
 
-## Problem Statement
+- **Each module** opens with its learning objectives and key concepts, then must-know points, warnings, and short video lessons.
+- **Scenario questions** are built on workplace situations. After submitting, learners see which answers were right, with an explanation for each.
+- **Learners need 80 percent to pass a module.** They can retry or move on.
+- **A 10-question capstone** brings all eight modules together in realistic administrator scenarios. Passing it produces a certificate of completion.
+- **An instructor view** holds answer keys with explanations, a concept glossary, common mistakes, and the learning objectives.
 
-During a SharePoint migration and analysis initiative, our team encountered a common challenge: team members were responsible for supporting migration work, but not everyone had the same level of SharePoint knowledge or confidence.
+## Learning design
 
-This created a need for a learning resource that was:
+The course follows Bloom's Taxonomy, moving learners from remembering key terms to using them in real migration decisions.
 
-- Practical
-- Beginner-friendly
-- Connected to real migration responsibilities
-- Designed for non-experts supporting technical work
-- Focused on confidence-building, not just information delivery
+| Level | In this course |
+|---|---|
+| Remember | Name SharePoint terms, tools, and administrator responsibilities. |
+| Understand | Explain how sites, libraries, permissions, and metadata support collaboration. |
+| Apply | Use those concepts to work through migration and administration scenarios. |
+| Analyze | Compare site structures, permission models, and ways to organize content. |
+| Evaluate | Recommend next steps for migration readiness and governance. |
 
----
+## Decisions
 
-## Solution
+| Decision | What I chose | What I didn't | Why |
+|---|---|---|---|
+| How it's delivered | One web page with no login | A learning platform | Anyone on the team can open it from a link, with nothing to install or license. |
+| Progress | Saved in the learner's browser | Accounts and a database | Nothing to run or secure. The trade-off is that progress stays on one device. |
+| Video | Embedded YouTube lessons | Recording and hosting my own | Good lessons already exist. Embedding keeps learners in the course instead of sending them to another site. |
+| The instructor view | Open, for this portfolio demo | A password in the page | A password written into a web page can be read by anyone who opens the code. In a live deployment, the instructor view would sit behind the organization's own sign-in. |
 
-The SharePoint Administrator Course provides a structured, interactive learning experience that introduces key concepts and offers a guided path to practical implementation.
+## Built with
 
-Instead of overwhelming learners with technical documentation, the course breaks SharePoint administration into approachable concepts and connects each concept to workplace scenarios.
+HTML, CSS, and JavaScript in a single file, [`sharepoint-admin-course.html`](sharepoint-admin-course.html), hosted on Vercel. There's no build step: open the file in a browser to run it locally.
 
-This makes the course useful for:
+## What comes next
 
-- Project teams supporting SharePoint migrations
-- New SharePoint administrators
-- LMS, operations, or content teams involved in platform transitions
-- Staff who need to understand SharePoint enough to collaborate with IT or migration teams
-- Learning and development teams creating internal technology enablement resources
-
----
-
-## Key Features
-
-- Interactive course structure
-- Scenario-based learning flow
-- Bloom’s Taxonomy-aligned progression
-- SharePoint administration concepts explained in plain language
-- Migration-readiness framing
-- Designed for team enablement and internal upskilling
-- Web-based deployment for easy access
-- Integrated YouTube API to embed relevant instructional videos directly within the module
-- Supports visual learners through multimedia explanations
-- Reduces cognitive load by keeping learning resources in one environment
-- Allows learners to review SharePoint concepts without leaving the course experience
-
----
-
-## Tech Stack
-
-This project demonstrates the use of modern web development tools to create a lightweight, accessible learning experience.
-
-**Built With:**
-
-- React / Next.js
-- Vercel
-- JavaScript
-- HTML
-- CSS
-- Instructional design principles
-- Bloom’s Taxonomy framework
+- Role-based paths for administrators, content owners, and project managers
+- Branching scenarios for migration decisions
+- A downloadable migration readiness checklist
+- Learner records in xAPI, so progress can move to a learning platform
+- A full accessibility review
 
 ---
 
-## What I Built
-
-For this project, I designed and developed a SharePoint learning module that supports both technical understanding and learner confidence.
-
-My role included:
-
-- Identifying the workplace learning need
-- Translating SharePoint migration challenges into learning objectives
-- Designing the course structure using Bloom’s Taxonomy
-- Building the interactive web-based module
-- Creating a learner-centered experience for team members with varying levels of technical confidence
-- Deploying the project for web access
-
----
-
-## Learning Objectives
-
-By the end of the module, learners should be able to:
-
-1. Describe the purpose and structure of SharePoint.
-2. Identify common SharePoint administrator responsibilities.
-3. Explain how permissions, document libraries, metadata, and site architecture impact collaboration.
-4. Recognize common issues that may appear during SharePoint migration planning.
-5. Apply SharePoint concepts to real-world migration and administration scenarios.
-6. Recommend practical next steps for organizing, analyzing, or preparing SharePoint content.
-
----
-
-## Why This Project Matters
-
-This project matters because many workplace technology initiatives assume that users and support teams already have the knowledge needed to participate confidently.
-
-In reality, teams often need a bridge between being assigned to a technical project and feeling prepared to contribute meaningfully.
-
-This course was designed to fill that bridge.
-
-It reflects my approach to learning technology: create resources that are practical, human-centered, and rooted in real implementation needs.
-
----
-
-## Future Enhancements
-
-Future versions of this project may include:
-
-- Knowledge checks and scored assessments
-- Branching scenarios for migration decision-making
-- Role-based learning paths for administrators, content owners, and project managers
-- Downloadable SharePoint migration readiness checklist
-- Accessibility enhancements
-- Expanded modules on permissions, governance, metadata, and document library strategy
-- Integration with xAPI or LMS tracking
-
----
-
-## Portfolio Reflection
-
-This project represents the intersection of learning design, technology enablement, and systems thinking.
-
-It was created to address a real organizational need and transformed into a scalable learning solution that helps teams prepare for SharePoint administration and migration work.
-
-For me, this project demonstrates how instructional design can support technical operations by making complex systems easier to understand, practice, and implement.
-
-
-Lyndonia 
+© 2026 Bytes with Don · [LinkedIn](https://www.linkedin.com/company/byteswithdon/) · [GitHub](https://github.com/byteswithdon)
